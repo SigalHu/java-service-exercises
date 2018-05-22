@@ -4,14 +4,19 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.sigalhu</groupId>
+    <!--groupId定义了项目属于哪个组，一般和项目所在的组织或公司存在关联-->
+    <groupId>com.sigalhu.jse</groupId>
+    <!--artifactId定义了当前Maven项目在组中唯一的ID-->
     <artifactId>java-service-exercises</artifactId>
+    <!--packaging指定打包类型，pom表示该项目为聚合项目，不打包-->
     <packaging>pom</packaging>
+    <!--version指定了项目当前的版本，SNAPSHOT意为快照，说明该项目还处于开发中，是不稳定版本-->
     <version>1.0-SNAPSHOT</version>
     <modules>
-        <module>maven-exercises</module>
+        <module>jse-maven</module>
     </modules>
 
+    <!--dependencies下可包含多个dependency以声明项目的依赖-->
     <dependencies>
         <dependency>
             <groupId>junit</groupId>
@@ -25,6 +30,7 @@
                 <groupId>junit</groupId>
                 <artifactId>junit</artifactId>
                 <version>4.12</version>
+                <!--scope为依赖范围，test表示该依赖只对测试有效-->
                 <scope>test</scope>
             </dependency>
         </dependencies>
