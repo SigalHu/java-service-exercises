@@ -1,6 +1,5 @@
-package com.sigalhu.exercises.maven.helloworld;
+package com.sigalhu.jse.maven.helloworld;
 
-import org.junit.Assert;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -8,9 +7,9 @@ import static org.junit.Assert.*;
 public class HelloWorldTest {
 
     @Test
-    public void testSayHello() {
+    public void sayHello() {
         HelloWorld helloWorld = new HelloWorld();
         String result = helloWorld.sayHello();
-        Assert.assertEquals("Hello Maven", result);
+        assertEquals( "Hello Maven", result );
     }
 }
