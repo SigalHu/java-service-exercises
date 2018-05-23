@@ -12,9 +12,15 @@
     <packaging>pom</packaging>
     <!--version指定了项目当前的版本，SNAPSHOT意为快照，说明该项目还处于开发中，是不稳定版本-->
     <version>1.0-SNAPSHOT</version>
+
     <modules>
         <module>jse-maven</module>
     </modules>
+
+    <!--使用properties定义Maven属性-->
+    <properties>
+        <junit.version>4.12</junit.version>
+    </properties>
 
     <!--dependencies下可包含多个dependency以声明项目的依赖-->
     <dependencies>
@@ -27,9 +33,12 @@
     <dependencyManagement>
         <dependencies>
             <dependency>
+                <!--定义当前Maven项目隶属的实际项目，一个实际项目往往会被划分成很多模块-->
                 <groupId>junit</groupId>
+                <!--定义实际项目中的一个Maven项目（模块），推荐使用实际项目名称作为artifactId的前缀-->
                 <artifactId>junit</artifactId>
-                <version>4.12</version>
+                <!--Maven运行时会将POM中所有${junit.version}替换成实际值-->
+                <version>${junit.version}</version>
                 <!--scope为依赖范围，test表示该依赖只对测试有效-->
                 <scope>test</scope>
             </dependency>
