@@ -46,10 +46,14 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
+                <!--声明一个非快照版本，避免由于插件版本变化造成的构建不稳定性-->
                 <version>1.2.1</version>
+                <!--executions下每个execution可以用来配置执行一个任务-->
                 <executions>
                     <execution>
+                        <!--通过phase配置，将其绑定到package生命周期阶段-->
                         <phase>package</phase>
+                        <!--通过goals配置指定要执行的插件目标-->
                         <goals>
                             <goal>shade</goal>
                         </goals>
