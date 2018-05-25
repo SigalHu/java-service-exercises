@@ -13,6 +13,9 @@
     <!--version指定了项目当前的版本，SNAPSHOT意为快照，说明该项目还处于开发中，是不稳定版本-->
     <version>1.0-SNAPSHOT</version>
 
+    <!--用户可以通过在一个打包方式为pom的Maven项目中声明任意数量的module来实现模块的聚合-->
+    <!--在构建时，Maven按序读取POM，如果该POM没有依赖模块，那么就构建该模块，否则就先构建其依赖模块，
+        如果该依赖还依赖于其他模块，则进一步先构建依赖的依赖-->
     <modules>
         <module>jse-maven</module>
     </modules>
@@ -30,6 +33,8 @@
         </dependency>
     </dependencies>
 
+    <!--dependencyManagement既能让子模块继承到父模块的依赖配置，又能保证子模块依赖使用的灵活性-->
+    <!--在dependencyManagement下的依赖声明不会引入实际的依赖-->
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -44,4 +49,47 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+            </plugin>
+
+            <!--默认情况下，maven-surefire-plugin的test目标会自动执行测试源码路径下所有符合一组命名模式的测试类-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+            </plugin>
+        </plugins>
+
+        <!--使用pluginManagement帮助管理插件，在该元素中配置的依赖不会造成实际的插件调用行为-->
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <!--声明一个非快照版本，避免由于插件版本变化造成的构建不稳定性-->
+                    <version>3.7.0</version>
+                    <configuration>
+                        <source>1.8</source>
+                        <target>1.8</target>
+                        <!--跳过测试代码编译-->
+                        <skip>true</skip>
+                    </configuration>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>2.18.1</version>
+                    <configuration>
+                        <!--跳过测试运行-->
+                        <skipTests>true</skipTests>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
 </project>
