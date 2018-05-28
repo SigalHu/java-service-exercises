@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>jse-maven</artifactId>
+        <groupId>com.sigalhu.jse</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>mvn-assembly-package</artifactId>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <!--声明一个非快照版本，避免由于插件版本变化造成的构建不稳定性-->
+                <version>2.5.3</version>
+                <configuration>
+                    <finalName>${project.artifactId}-${project.version}</finalName>
+                    <descriptors>
+                        <descriptor>src/main/assembly/assembly.xml</descriptor>
+                    </descriptors>
+                    <!--指定打包类型-->
+                    <formats>
+                        <format>zip</format>
+                    </formats>
+                    <!--是否在包名尾部追加assembly.xml中定义的assembly id-->
+                    <appendAssemblyId>false</appendAssemblyId>
+                    <!--打包文件保存路径，默认为target-->
+                    <outputDirectory>target</outputDirectory>
+                    <!--这样配置后，mvn deploy不会把assembly打的zip包上传到nexus-->
+                    <attach>false</attach>
+                </configuration>
+                <!--executions下每个execution可以用来配置执行一个任务-->
+                <executions>
+                    <execution>
+                        <!--通过phase配置，将其绑定到package生命周期阶段-->
+                        <phase>package</phase>
+                        <!--通过goals配置指定要执行的插件目标-->
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>2.8</version>
+                <executions>
+                    <execution>
+                        <id>copy-libs</id>
+                        <!--通过phase配置，将其绑定到process-resources生命周期阶段-->
+                        <phase>process-resources</phase>
+                        <goals>
+                            <goal>copy-dependencies</goal>
+                        </goals>
+                        <configuration>
+                            <!--<excludeGroupIds>com.sigalhu.jse.maven</excludeGroupIds>-->
+                            <!--<includeScope>compile</includeScope>-->
+                            <outputDirectory>${project.build.directory}/lib</outputDirectory>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>copy-core</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>copy</goal>
+                        </goals>
+                        <configuration>
+                            <artifactItems>
+                                <!--类似dependency，若父POM已通过dependencyManagement声明该模块，此处可省略version-->
+                                <artifactItem>
+                                    <groupId>com.sigalhu.jse</groupId>
+                                    <artifactId>mvn-shade-package</artifactId>
+                                    <version>${project.version}</version>
+                                </artifactItem>
+                            </artifactItems>
+                            <outputDirectory>${project.build.directory}/core</outputDirectory>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>

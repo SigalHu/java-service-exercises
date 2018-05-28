@@ -12,9 +12,11 @@
     <artifactId>jse-maven</artifactId>
     <packaging>pom</packaging>
 
+    <!--用户可以通过在一个打包方式为pom的Maven项目中声明任意数量的module来实现模块的聚合-->
+    <!--在构建时，Maven按序读取POM，如果该POM没有依赖模块，那么就构建该模块，否则就先构建其依赖模块，
+        如果该依赖还依赖于其他模块，则进一步先构建依赖的依赖-->
     <modules>
         <module>mvn-shade-package</module>
+        <module>mvn-assembly-package</module>
     </modules>
-
-
 </project>
