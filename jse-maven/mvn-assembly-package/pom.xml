@@ -15,40 +15,6 @@
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-assembly-plugin</artifactId>
-                <!--声明一个非快照版本，避免由于插件版本变化造成的构建不稳定性-->
-                <version>2.5.3</version>
-                <configuration>
-                    <finalName>${project.artifactId}-${project.version}</finalName>
-                    <descriptors>
-                        <descriptor>src/main/assembly/assembly.xml</descriptor>
-                    </descriptors>
-                    <!--指定打包类型-->
-                    <formats>
-                        <format>zip</format>
-                    </formats>
-                    <!--是否在包名尾部追加assembly.xml中定义的assembly id-->
-                    <appendAssemblyId>false</appendAssemblyId>
-                    <!--打包文件保存路径，默认为target-->
-                    <outputDirectory>target</outputDirectory>
-                    <!--这样配置后，mvn deploy不会把assembly打的zip包上传到nexus-->
-                    <attach>false</attach>
-                </configuration>
-                <!--executions下每个execution可以用来配置执行一个任务-->
-                <executions>
-                    <execution>
-                        <!--通过phase配置，将其绑定到package生命周期阶段-->
-                        <phase>package</phase>
-                        <!--通过goals配置指定要执行的插件目标-->
-                        <goals>
-                            <goal>single</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>
                 <version>2.8</version>
                 <executions>
@@ -82,6 +48,40 @@
                             </artifactItems>
                             <outputDirectory>${project.build.directory}/core</outputDirectory>
                         </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <!--声明一个非快照版本，避免由于插件版本变化造成的构建不稳定性-->
+                <version>2.5.3</version>
+                <configuration>
+                    <finalName>${project.artifactId}-${project.version}</finalName>
+                    <descriptors>
+                        <descriptor>src/main/assembly/assembly.xml</descriptor>
+                    </descriptors>
+                    <!--指定打包类型-->
+                    <formats>
+                        <format>zip</format>
+                    </formats>
+                    <!--是否在包名尾部追加assembly.xml中定义的assembly id-->
+                    <appendAssemblyId>false</appendAssemblyId>
+                    <!--打包文件保存路径，默认为target-->
+                    <outputDirectory>target</outputDirectory>
+                    <!--这样配置后，mvn deploy不会把assembly打的zip包上传到nexus-->
+                    <attach>false</attach>
+                </configuration>
+                <!--executions下每个execution可以用来配置执行一个任务-->
+                <executions>
+                    <execution>
+                        <!--通过phase配置，将其绑定到package生命周期阶段-->
+                        <phase>package</phase>
+                        <!--通过goals配置指定要执行的插件目标-->
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
                     </execution>
                 </executions>
             </plugin>
