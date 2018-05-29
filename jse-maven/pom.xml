@@ -19,4 +19,21 @@
         <module>mvn-shade-package</module>
         <module>mvn-assembly-package</module>
     </modules>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.sigalhu.jse</groupId>
+                <artifactId>mvn-shade-package</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <!--指明使用该属性文件作为resource/filtering属性值的来源-->
+        <filters>
+            <filter>../settings/mvn-stable.properties</filter>
+        </filters>
+    </build>
 </project>

@@ -11,7 +11,33 @@
 
     <artifactId>mvn-assembly-package</artifactId>
 
+    <!--此处是为了下面copy-libs拷贝该声明模块的依赖-->
+    <dependencies>
+        <dependency>
+            <groupId>com.sigalhu.jse</groupId>
+            <artifactId>mvn-shade-package</artifactId>
+        </dependency>
+    </dependencies>
+
     <build>
+        <!--设置资源目录，默认为src/main/resources-->
+        <resources>
+            <resource>
+                <directory>src/main/assembly/conf</directory>
+                <!--资源文件当中${…}符号会被替换为系统属性或者项目属性的值-->
+                <filtering>true</filtering>
+                <includes>
+                    <include>*.properties</include>
+                </includes>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>false</filtering>
+                <includes>
+                    <include>*.properties</include>
+                </includes>
+            </resource>
+        </resources>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -26,8 +52,11 @@
                             <goal>copy-dependencies</goal>
                         </goals>
                         <configuration>
-                            <!--<excludeGroupIds>com.sigalhu.jse.maven</excludeGroupIds>-->
-                            <!--<includeScope>compile</includeScope>-->
+                            <!--排除本项目-->
+                            <excludeGroupIds>com.sigalhu.jse</excludeGroupIds>
+                            <!--排除所有scope为test的依赖-->
+                            <includeScope>compile</includeScope>
+                            <!--依赖保存路径-->
                             <outputDirectory>${project.build.directory}/lib</outputDirectory>
                         </configuration>
                     </execution>

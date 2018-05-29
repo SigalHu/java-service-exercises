@@ -42,7 +42,7 @@
             <!--Maven运行时会将POM中所有${junit.version}替换成实际值-->
             <version>${hamcrest.core.version}</version>
             <!--scope为依赖范围，test表示该依赖只对测试有效-->
-            <scope>test</scope>
+            <!--<scope>test</scope>-->
         </dependency>
     </dependencies>
 

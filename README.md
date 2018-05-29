@@ -10,3 +10,4 @@ Java相关工具库、中间件等使用案例
   * mvn-assembly-package（参考《Maven实战》第14章），主要包括：
     * maven-assembly-plugin打包插件的使用
     * maven-dependency-plugin插件的使用
+    * 属性过滤、资源文件管理
