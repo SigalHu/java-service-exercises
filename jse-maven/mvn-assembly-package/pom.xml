@@ -24,7 +24,7 @@
         <resources>
             <resource>
                 <directory>src/main/assembly/conf</directory>
-                <!--资源文件当中${…}符号会被替换为系统属性或者项目属性的值-->
+                <!--开启资源过滤，资源文件当中${…}符号会被替换为系统属性或者项目属性的值-->
                 <filtering>true</filtering>
                 <includes>
                     <include>*.properties</include>
