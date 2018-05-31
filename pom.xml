@@ -27,6 +27,7 @@
         <javax.mail.version>1.4.1</javax.mail.version>
         <greenmail.version>1.5.7</greenmail.version>
         <dom4j.version>1.6.1</dom4j.version>
+        <kaptcha.version>2.3.2</kaptcha.version>
     </properties>
 
     <!--dependencies下可包含多个dependency以声明项目的依赖-->
@@ -98,6 +99,13 @@
                 <groupId>dom4j</groupId>
                 <artifactId>dom4j</artifactId>
                 <version>${dom4j.version}</version>
+            </dependency>
+
+            <!--验证码-->
+            <dependency>
+                <groupId>com.github.penggle</groupId>
+                <artifactId>kaptcha</artifactId>
+                <version>${kaptcha.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

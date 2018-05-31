@@ -11,5 +11,5 @@ Java相关工具库、中间件等使用案例
     * maven-assembly-plugin打包插件的使用
     * maven-dependency-plugin插件的使用
     * resource、filtering、profile
-  * mvn-sample-webapp（参考《Maven实战》第4/5/8/12章）
+  * mvn-sample-webapp（参考《Maven实战》第4/5/8/10/12章）
     * 使用maven构建web应用

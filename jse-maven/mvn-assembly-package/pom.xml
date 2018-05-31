@@ -20,6 +20,11 @@
     </dependencies>
 
     <build>
+        <!--指明使用该属性文件作为resource/filtering属性值的来源-->
+        <filters>
+            <filter>../settings/mvn-${profile.name}.properties</filter>
+        </filters>
+
         <!--设置资源目录，默认为src/main/resources-->
         <resources>
             <resource>

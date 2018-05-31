@@ -14,6 +14,9 @@
     <modules>
         <module>web-account-email</module>
         <module>web-account-persist</module>
+        <module>web-account-captcha</module>
+        <module>web-account-service</module>
+        <module>web-account-webapp</module>
     </modules>
 
     <dependencies>
@@ -39,4 +42,25 @@
             <artifactId>spring-web</artifactId>
         </dependency>
     </dependencies>
+
+    <dependencyManagement>
+        <dependencies>
+            <!--依赖模块-->
+            <dependency>
+                <groupId>com.sigalhu.jse</groupId>
+                <artifactId>web-account-captcha</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.sigalhu.jse</groupId>
+                <artifactId>web-account-email</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.sigalhu.jse</groupId>
+                <artifactId>web-account-persist</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 </project>
