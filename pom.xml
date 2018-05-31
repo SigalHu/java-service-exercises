@@ -23,6 +23,10 @@
     <!--使用properties定义Maven属性-->
     <properties>
         <junit.version>4.12</junit.version>
+        <springframework.version>4.3.16.RELEASE</springframework.version>
+        <javax.mail.version>1.4.1</javax.mail.version>
+        <greenmail.version>1.5.7</greenmail.version>
+        <dom4j.version>1.6.1</dom4j.version>
     </properties>
 
     <!--dependencies下可包含多个dependency以声明项目的依赖-->
@@ -37,6 +41,7 @@
     <!--在dependencyManagement下的依赖声明不会引入实际的依赖-->
     <dependencyManagement>
         <dependencies>
+            <!--测试-->
             <dependency>
                 <!--定义当前Maven项目隶属的实际项目，一个实际项目往往会被划分成很多模块-->
                 <groupId>junit</groupId>
@@ -46,6 +51,53 @@
                 <version>${junit.version}</version>
                 <!--scope为依赖范围，test表示该依赖只对测试有效-->
                 <scope>test</scope>
+            </dependency>
+
+            <!--spring-->
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-core</artifactId>
+                <version>${springframework.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-beans</artifactId>
+                <version>${springframework.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-context</artifactId>
+                <version>${springframework.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-context-support</artifactId>
+                <version>${springframework.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-web</artifactId>
+                <version>${springframework.version}</version>
+            </dependency>
+
+            <!--email-->
+            <dependency>
+                <groupId>javax.mail</groupId>
+                <artifactId>mail</artifactId>
+                <version>${javax.mail.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.icegreen</groupId>
+                <artifactId>greenmail</artifactId>
+                <version>${greenmail.version}</version>
+                <scope>test</scope>
+            </dependency>
+
+            <!--xml-->
+            <dependency>
+                <groupId>dom4j</groupId>
+                <artifactId>dom4j</artifactId>
+                <version>${dom4j.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

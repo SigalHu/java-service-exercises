@@ -18,6 +18,7 @@
     <modules>
         <module>mvn-shade-package</module>
         <module>mvn-assembly-package</module>
+        <module>mvn-sample-webapp</module>
     </modules>
 
     <dependencyManagement>
