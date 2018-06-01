@@ -44,5 +44,20 @@
                 <filtering>true</filtering>
             </resource>
         </resources>
+
+        <plugins>
+            <!--运行jetty前需要在parent POM（java-service-exercises）执行install，将相关依赖安装到本地仓库-->
+            <plugin>
+                <groupId>org.eclipse.jetty</groupId>
+                <artifactId>jetty-maven-plugin</artifactId>
+                <version>9.4.4.v20170414</version>
+                <configuration>
+                    <scanIntervalSeconds>5</scanIntervalSeconds>
+                    <webApp>
+                        <contextPath>/</contextPath>
+                    </webApp>
+                </configuration>
+            </plugin>
+        </plugins>
     </build>
 </project>
