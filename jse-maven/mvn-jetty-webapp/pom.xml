@@ -12,6 +12,19 @@
     <artifactId>mvn-jetty-webapp</artifactId>
     <packaging>war</packaging>
 
+    <properties>
+        <servlet.version>4.0.1</servlet.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>${servlet.version}</version>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+
     <build>
         <plugins>
             <plugin>
@@ -19,10 +32,28 @@
                 <artifactId>jetty-maven-plugin</artifactId>
                 <version>9.4.4.v20170414</version>
                 <configuration>
+                    <httpConnector>
+                        <!--连接监听的端口，默认8080-->
+                        <port>8088</port>
+                    </httpConnector>
+                    <!--自动扫描文件改变并进行热部署的时间间隔，单位为秒
+                        默认值为0，代表禁用扫描并热部署，只有一个大于0的配置可以使它生效。-->
                     <scanIntervalSeconds>5</scanIntervalSeconds>
+                    <!--重新加载选项，默认值是automatic，默认配置下当发现有文件改变会自动进行热部署。
+                        如果设置为manual，部署将会通过插件被手动触发。-->
+                    <reload>automatic</reload>
                     <webApp>
+                        <!--web应用的根路径，默认设置为/-->
                         <contextPath>/</contextPath>
+                        <!--在web应用运行时，Jetty用来扩展或者拷贝jar文件和JSP编译后类的文件夹路径
+                            默认路径是${project.build.outputDirectory}/tmp-->
+                        <tempDirectory>${project.build.outputDirectory}/tmp</tempDirectory>
                     </webApp>
+                    <!--<scanTargetPatterns>-->
+                        <!--<scanTargetPattern>-->
+                            <!---->
+                        <!--</scanTargetPattern>-->
+                    <!--</scanTargetPatterns>-->
                 </configuration>
             </plugin>
         </plugins>
