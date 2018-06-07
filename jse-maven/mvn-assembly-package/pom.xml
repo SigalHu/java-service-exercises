@@ -19,6 +19,40 @@
         </dependency>
     </dependencies>
 
+    <profiles>
+        <profile>
+            <id>test</id>
+            <activation>
+                <!--指定profile自动激活，如果POM中有任何一个profile通过以上其他任意一种方式被激活，所有默认激活配置都会失效-->
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <!--设置属性值，通过激活不同的profile来实现相同属性，不同属性值的替换-->
+            <properties>
+                <profile.name>test</profile.name>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>stable</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <profile.name>stable</profile.name>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>online</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <profile.name>online</profile.name>
+            </properties>
+        </profile>
+    </profiles>
+
     <build>
         <!--指明使用该属性文件作为resource/filtering属性值的来源-->
         <filters>
