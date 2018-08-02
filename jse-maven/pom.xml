@@ -2,15 +2,20 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <parent>
-        <artifactId>java-service-exercises</artifactId>
-        <groupId>com.sigalhu.jse</groupId>
-        <version>1.0-SNAPSHOT</version>
-    </parent>
     <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <!--groupId定义了项目属于哪个组，一般和项目所在的组织或公司存在关联-->
+        <groupId>com.sigalhu.jse</groupId>
+        <!--artifactId定义了当前Maven项目在组中唯一的ID-->
+        <artifactId>java-service-exercises</artifactId>
+        <!--version指定了项目当前的版本，SNAPSHOT意为快照，说明该项目还处于开发中，是不稳定版本-->
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
 
     <artifactId>jse-maven</artifactId>
+    <!--packaging指定打包类型，pom表示该项目为聚合项目，不打包-->
     <packaging>pom</packaging>
+    <version>1.0.0-SNAPSHOT</version>
 
     <!--用户可以通过在一个打包方式为pom的Maven项目中声明任意数量的module来实现模块的聚合-->
     <!--在构建时，Maven按序读取POM，如果该POM没有依赖模块，那么就构建该模块，否则就先构建其依赖模块，
@@ -22,6 +27,28 @@
         <module>mvn-sample-webapp</module>
     </modules>
 
+    <!--使用properties定义Maven属性-->
+    <properties>
+        <junit.version>4.12</junit.version>
+    </properties>
+
+    <!--dependencies下可包含多个dependency以声明项目的依赖-->
+    <dependencies>
+        <!--test-->
+        <dependency>
+            <!--定义当前Maven项目隶属的实际项目，一个实际项目往往会被划分成很多模块-->
+            <groupId>junit</groupId>
+            <!--定义实际项目中的一个Maven项目（模块），推荐使用实际项目名称作为artifactId的前缀-->
+            <artifactId>junit</artifactId>
+            <!--Maven运行时会将POM中所有${junit.version}替换成实际值-->
+            <version>${junit.version}</version>
+            <!--scope为依赖范围，test表示该依赖只对测试有效-->
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <!--dependencyManagement既能让子模块继承到父模块的依赖配置，又能保证子模块依赖使用的灵活性-->
+    <!--在dependencyManagement下的依赖声明不会引入实际的依赖-->
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -31,4 +58,47 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+            </plugin>
+
+            <!--默认情况下，maven-surefire-plugin的test目标会自动执行测试源码路径下所有符合一组命名模式的测试类-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+            </plugin>
+        </plugins>
+
+        <!--使用pluginManagement帮助管理插件，在该元素中配置的依赖不会造成实际的插件调用行为-->
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <!--声明一个非快照版本，避免由于插件版本变化造成的构建不稳定性-->
+                    <version>${maven-compiler-plugin.version}</version>
+                    <configuration>
+                        <source>${java.version}</source>
+                        <target>${java.version}</target>
+                        <!--跳过测试代码编译-->
+                        <skip>true</skip>
+                    </configuration>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>${maven-surefire-plugin.version}</version>
+                    <configuration>
+                        <!--跳过测试运行-->
+                        <skipTests>true</skipTests>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
 </project>

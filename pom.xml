@@ -4,56 +4,39 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <!--groupId定义了项目属于哪个组，一般和项目所在的组织或公司存在关联-->
     <groupId>com.sigalhu.jse</groupId>
-    <!--artifactId定义了当前Maven项目在组中唯一的ID-->
     <artifactId>java-service-exercises</artifactId>
-    <!--packaging指定打包类型，pom表示该项目为聚合项目，不打包-->
     <packaging>pom</packaging>
-    <!--version指定了项目当前的版本，SNAPSHOT意为快照，说明该项目还处于开发中，是不稳定版本-->
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0.0-SNAPSHOT</version>
 
-    <!--用户可以通过在一个打包方式为pom的Maven项目中声明任意数量的module来实现模块的聚合-->
-    <!--在构建时，Maven按序读取POM，如果该POM没有依赖模块，那么就构建该模块，否则就先构建其依赖模块，
-        如果该依赖还依赖于其他模块，则进一步先构建依赖的依赖-->
     <modules>
         <module>jse-maven</module>
     </modules>
 
-    <!--使用properties定义Maven属性-->
     <properties>
-        <junit.version>4.12</junit.version>
+        <!--framework-->
         <springframework.version>4.3.16.RELEASE</springframework.version>
-        <javax.mail.version>1.4.1</javax.mail.version>
-        <greenmail.version>1.5.7</greenmail.version>
+
+        <!--third part-->
+        <mail.version>1.4.1</mail.version>
         <dom4j.version>1.6.1</dom4j.version>
         <kaptcha.version>2.3.2</kaptcha.version>
+
+        <!--test-->
+        <junit.version>4.12</junit.version>
+        <greenmail.version>1.5.7</greenmail.version>
+
+        <!--plugin-->
+        <maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>
+        <maven-surefire-plugin.version>2.18.1</maven-surefire-plugin.version>
+
+        <!--system-->
+        <java.version>1.8</java.version>
     </properties>
 
-    <!--dependencies下可包含多个dependency以声明项目的依赖-->
-    <dependencies>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-        </dependency>
-    </dependencies>
-
-    <!--dependencyManagement既能让子模块继承到父模块的依赖配置，又能保证子模块依赖使用的灵活性-->
-    <!--在dependencyManagement下的依赖声明不会引入实际的依赖-->
     <dependencyManagement>
         <dependencies>
-            <!--测试-->
-            <dependency>
-                <!--定义当前Maven项目隶属的实际项目，一个实际项目往往会被划分成很多模块-->
-                <groupId>junit</groupId>
-                <!--定义实际项目中的一个Maven项目（模块），推荐使用实际项目名称作为artifactId的前缀-->
-                <artifactId>junit</artifactId>
-                <!--Maven运行时会将POM中所有${junit.version}替换成实际值-->
-                <version>${junit.version}</version>
-                <!--scope为依赖范围，test表示该依赖只对测试有效-->
-                <scope>test</scope>
-            </dependency>
-
+            <!--framework-->
             <!--spring-->
             <dependency>
                 <groupId>org.springframework</groupId>
@@ -81,31 +64,35 @@
                 <version>${springframework.version}</version>
             </dependency>
 
-            <!--email-->
+            <!--third part-->
             <dependency>
                 <groupId>javax.mail</groupId>
                 <artifactId>mail</artifactId>
-                <version>${javax.mail.version}</version>
+                <version>${mail.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>dom4j</groupId>
+                <artifactId>dom4j</artifactId>
+                <version>${dom4j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.penggle</groupId>
+                <artifactId>kaptcha</artifactId>
+                <version>${kaptcha.version}</version>
+            </dependency>
+
+            <!--test-->
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>${junit.version}</version>
+                <scope>test</scope>
             </dependency>
             <dependency>
                 <groupId>com.icegreen</groupId>
                 <artifactId>greenmail</artifactId>
                 <version>${greenmail.version}</version>
                 <scope>test</scope>
-            </dependency>
-
-            <!--xml-->
-            <dependency>
-                <groupId>dom4j</groupId>
-                <artifactId>dom4j</artifactId>
-                <version>${dom4j.version}</version>
-            </dependency>
-
-            <!--验证码-->
-            <dependency>
-                <groupId>com.github.penggle</groupId>
-                <artifactId>kaptcha</artifactId>
-                <version>${kaptcha.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
@@ -117,37 +104,27 @@
                 <artifactId>maven-compiler-plugin</artifactId>
             </plugin>
 
-            <!--默认情况下，maven-surefire-plugin的test目标会自动执行测试源码路径下所有符合一组命名模式的测试类-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
             </plugin>
         </plugins>
 
-        <!--使用pluginManagement帮助管理插件，在该元素中配置的依赖不会造成实际的插件调用行为-->
         <pluginManagement>
             <plugins>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
-                    <!--声明一个非快照版本，避免由于插件版本变化造成的构建不稳定性-->
-                    <version>3.7.0</version>
+                    <version>${maven-compiler-plugin.version}</version>
                     <configuration>
-                        <source>1.8</source>
-                        <target>1.8</target>
-                        <!--跳过测试代码编译-->
-                        <skip>true</skip>
+                        <source>${java.version}</source>
+                        <target>${java.version}</target>
                     </configuration>
                 </plugin>
-
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-surefire-plugin</artifactId>
-                    <version>2.18.1</version>
-                    <configuration>
-                        <!--跳过测试运行-->
-                        <skipTests>true</skipTests>
-                    </configuration>
+                    <version>${maven-surefire-plugin.version}</version>
                 </plugin>
             </plugins>
         </pluginManagement>

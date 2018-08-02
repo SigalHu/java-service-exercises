@@ -5,7 +5,7 @@
     <parent>
         <artifactId>mvn-sample-webapp</artifactId>
         <groupId>com.sigalhu.jse</groupId>
-        <version>1.0-SNAPSHOT</version>
+        <version>1.0.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
@@ -13,21 +13,23 @@
     <packaging>war</packaging>
 
     <properties>
-        <servlet.version>4.0.1</servlet.version>
-        <servlet.jsp.version>2.3.1</servlet.jsp.version>
+        <javax.servlet-api.version>4.0.1</javax.servlet-api.version>
+        <javax.servlet.jsp-api.version>2.3.1</javax.servlet.jsp-api.version>
+
+        <jetty-maven-plugin.version>9.4.4.v20170414</jetty-maven-plugin.version>
     </properties>
 
     <dependencies>
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
-            <version>${servlet.version}</version>
+            <version>${javax.servlet-api.version}</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>javax.servlet.jsp</groupId>
             <artifactId>javax.servlet.jsp-api</artifactId>
-            <version>${servlet.jsp.version}</version>
+            <version>${javax.servlet.jsp-api.version}</version>
             <scope>provided</scope>
         </dependency>
 
@@ -50,7 +52,7 @@
             <plugin>
                 <groupId>org.eclipse.jetty</groupId>
                 <artifactId>jetty-maven-plugin</artifactId>
-                <version>9.4.4.v20170414</version>
+                <version>${jetty-maven-plugin.version}</version>
                 <configuration>
                     <scanIntervalSeconds>5</scanIntervalSeconds>
                     <webApp>
