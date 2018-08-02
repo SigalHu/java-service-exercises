@@ -18,7 +18,7 @@
 
     <!--使用properties定义Maven属性-->
     <properties>
-        <hamcrest.core.version>1.3</hamcrest.core.version>
+        <hamcrest-core.version>1.3</hamcrest-core.version>
     </properties>
 
     <!--dependencies下可包含多个dependency以声明项目的依赖-->
@@ -40,9 +40,9 @@
             <groupId>org.hamcrest</groupId>
             <artifactId>hamcrest-core</artifactId>
             <!--Maven运行时会将POM中所有${junit.version}替换成实际值-->
-            <version>${hamcrest.core.version}</version>
+            <version>${hamcrest-core.version}</version>
             <!--scope为依赖范围，test表示该依赖只对测试有效-->
-            <!--<scope>test</scope>-->
+            <scope>test</scope>
         </dependency>
     </dependencies>
 
