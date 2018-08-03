@@ -2,7 +2,7 @@
 
 Java相关工具库、中间件等使用案例
 
-### 构建
+### 编译构建
 
 * jse-maven
   * mvn-shade-package（参考《Maven实战》第3/4/7/8章），主要包括：
@@ -16,3 +16,7 @@ Java相关工具库、中间件等使用案例
     * jetty-maven-plugin插件的使用
   * mvn-sample-webapp（参考《Maven实战》第4/5/8/10/12章）
     * 使用maven构建web应用
+    
+### 开发框架
+
+  * jse-spring
