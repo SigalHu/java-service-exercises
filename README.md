@@ -7,11 +7,11 @@ Java相关工具库、中间件等使用案例
 * jse-maven
   * mvn-shade-package（参考《Maven实战》第3/4/7/8章），主要包括：
     * maven-shade-plugin打包插件的使用
-    * 依赖、插件、聚合、继承
+    * 依赖/插件/聚合/继承
   * mvn-assembly-package（参考《Maven实战》第14章），主要包括：
     * maven-assembly-plugin打包插件的使用
     * maven-dependency-plugin插件的使用
-    * resource、filtering、profile
+    * resource/filtering/profile
   * mvn-jetty-webapp
     * jetty-maven-plugin插件的使用
   * mvn-sample-webapp（参考《Maven实战》第4/5/8/10/12章）
@@ -20,3 +20,6 @@ Java相关工具库、中间件等使用案例
 ### 开发框架
 
   * jse-spring
+    * knights（参考《Spring实战》第1章），主要包括：
+      * DI/AOP/xml配置
+      * Mockito的使用
