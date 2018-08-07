@@ -25,3 +25,4 @@ Java相关工具库、中间件等使用案例
       * Mockito的使用
     * soundsystem（参考《Spring实战》第2章），主要包括
       * 自动化装配bean（scan）
+      * 通过Java代码装配bean（code）
