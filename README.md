@@ -23,7 +23,11 @@ Java相关工具库、中间件等使用案例
     * knights（参考《Spring实战》第1章），主要包括：
       * DI/AOP/xml配置
       * Mockito的使用
-    * soundsystem（参考《Spring实战》第2章），主要包括
+    * soundsystem（参考《Spring实战》第2章），主要包括：
       * 自动化装配bean（scan）
       * 通过Java代码装配bean（code）
       * 通过xml装配bean（xml）
+    * restfun（参考《Spring实战》第2/3章），主要包括：
+      * 导入和混合配置
+      * 环境与profile
+      * 条件化的bean

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:property-placeholder location="classpath*:*.properties"/>
+
+    <!--可以在根<beans>元素中嵌套定义<beans>元素，而不是为每个环境都创建一个profile xml文件-->
+    <beans profile="prod">
+        <bean id="prodMagicBean" class="com.sigalhu.jse.spring.restfun.MagicBean">
+            <property name="name" value="prodMagicBean"/>
+        </bean>
+    </beans>
+</beans>
