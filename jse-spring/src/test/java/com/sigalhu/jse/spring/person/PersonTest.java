@@ -17,17 +17,26 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 public class PersonTest {
 
     @Autowired
-    private CodePerson codePerson;
+    private CodePerson codePerson2;
 
     @Autowired
     private ScanPerson scanPerson;
 
+    @Autowired(required = false)
+    private Family family1;
+
+    @Autowired(required = false)
+    private Family family2;
+
     @Test
     public void test() {
-        Assert.assertNotNull(codePerson);
-        System.out.println(codePerson);
+        Assert.assertNotNull(codePerson2);
+        System.out.println(codePerson2);
 
         Assert.assertNotNull(scanPerson);
         System.out.println(scanPerson);
+
+        System.out.println(family1);
+        System.out.println(family2);
     }
 }

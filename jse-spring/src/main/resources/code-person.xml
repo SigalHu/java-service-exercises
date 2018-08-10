@@ -2,7 +2,8 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
 
     <!--该元素将会生成一个PropertySourcesPlaceholderConfigurer bean-->
     <context:property-placeholder location="classpath*:*.properties"/>
@@ -13,5 +14,58 @@
         <property name="name" value="${code.person.name}"/>
         <property name="age" value="${code.person.age}"/>
         <property name="sex" value="${code.person.sex}"/>
+    </bean>
+
+    <bean id="codePerson2" class="com.sigalhu.jse.spring.person.CodePerson">
+        <!--SpEL表达式要放到#{...}中-->
+        <!--可以引用其他bean或其他bean的属性，还可以调用bean上的方法-->
+        <!--matches运算符对String类型的文本应用正则表达式，运算结果返回一个Boolean类型的值-->
+        <property name="name" value="#{codePerson.name matches '[a-zA-Z]+' ? 'Winner' : 'Loser'}"/>
+        <property name="age" value="#{codePerson.getAge()}"/>
+        <!--T()表达式会将java.lang.System视为Java中对应的类型，因此可以调用静态方法-->
+        <!--T()运算符的结果会是一个Class对象，通过它能够访问目标类型的静态方法和常量-->
+        <property name="mob" value="#{T(System).currentTimeMillis()%2==0 ? 1234 : 4321}"/>
+        <!--可以使用SpEL表示字面值，包括整数、浮点数、字符串、boolean值与使用科学计数法的数值-->
+        <!--?.运算符能够在访问它右边的内容之前，确保它所对应的元素不是null-->
+        <property name="sex" value="#{'male'?.toUpperCase()}"/>
+    </bean>
+
+    <util:list id="people">
+        <bean id="people1" class="com.sigalhu.jse.spring.person.CodePerson">
+            <property name="name" value="people1"/>
+            <property name="age" value="1"/>
+        </bean>
+        <bean id="people2" class="com.sigalhu.jse.spring.person.CodePerson">
+            <property name="name" value="people2"/>
+            <property name="age" value="2"/>
+        </bean>
+        <bean id="people3" class="com.sigalhu.jse.spring.person.CodePerson">
+            <property name="name" value="people3"/>
+            <property name="age" value="1"/>
+        </bean>
+        <bean id="people4" class="com.sigalhu.jse.spring.person.CodePerson">
+            <property name="name" value="people4"/>
+            <property name="age" value="2"/>
+        </bean>
+        <bean id="people5" class="com.sigalhu.jse.spring.person.CodePerson">
+            <property name="name" value="people5"/>
+            <property name="age" value="1"/>
+        </bean>
+        <bean id="people6" class="com.sigalhu.jse.spring.person.CodePerson">
+            <property name="name" value="people6"/>
+            <property name="age" value="2"/>
+        </bean>
+    </util:list>
+
+    <bean id="family1" class="com.sigalhu.jse.spring.person.Family">
+        <!--.?[]查询运算符用来对集合进行过滤，得到集合的一个子集-->
+        <property name="people" value="#{people.?[age == 1]}"/>
+        <!--.![]投影运算符会从集合的每个成员中选择特定的属性放到另外一个集合中-->
+        <property name="names" value="#{people.?[age == 1].![name]}"/>
+    </bean>
+
+    <bean id="family2" class="com.sigalhu.jse.spring.person.Family">
+        <!--.^[]和.$[]查询运算符分别用来在集合中查询第一个和最后一个匹配项-->
+        <property name="people" value="#{T(java.util.Arrays).asList(people.^[age == 1], people.$[age == 1])}"/>
     </bean>
 </beans>
