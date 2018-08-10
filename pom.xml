@@ -11,11 +11,13 @@
 
     <modules>
         <module>jse-maven</module>
+        <module>jse-spring</module>
     </modules>
 
     <properties>
         <!--framework-->
-        <springframework.version>4.3.16.RELEASE</springframework.version>
+        <springframework.version>4.2.9.RELEASE</springframework.version>
+        <aspectj.version>1.7.4</aspectj.version>
 
         <!--third part-->
         <mail.version>1.4.1</mail.version>
@@ -24,7 +26,9 @@
 
         <!--test-->
         <junit.version>4.12</junit.version>
+        <mockito-core.version>2.21.0</mockito-core.version>
         <greenmail.version>1.5.7</greenmail.version>
+        <system-rules.version>1.18.0</system-rules.version>
 
         <!--plugin-->
         <maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>
@@ -38,11 +42,6 @@
         <dependencies>
             <!--framework-->
             <!--spring-->
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-core</artifactId>
-                <version>${springframework.version}</version>
-            </dependency>
             <dependency>
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-beans</artifactId>
@@ -60,8 +59,60 @@
             </dependency>
             <dependency>
                 <groupId>org.springframework</groupId>
+                <artifactId>spring-core</artifactId>
+                <version>${springframework.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-aop</artifactId>
+                <version>${springframework.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-expression</artifactId>
+                <version>${springframework.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-tx</artifactId>
+                <version>${springframework.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-asm</artifactId>
+                <version>${springframework.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
                 <artifactId>spring-web</artifactId>
                 <version>${springframework.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-webmvc</artifactId>
+                <version>${springframework.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-test</artifactId>
+                <version>${springframework.version}</version>
+            </dependency>
+
+            <!--AOP-->
+            <dependency>
+                <groupId>org.aspectj</groupId>
+                <artifactId>aspectjrt</artifactId>
+                <version>${aspectj.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.aspectj</groupId>
+                <artifactId>aspectjweaver</artifactId>
+                <version>${aspectj.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.aspectj</groupId>
+                <artifactId>aspectjtools</artifactId>
+                <version>${aspectj.version}</version>
             </dependency>
 
             <!--third part-->
@@ -89,9 +140,21 @@
                 <scope>test</scope>
             </dependency>
             <dependency>
+                <groupId>org.mockito</groupId>
+                <artifactId>mockito-core</artifactId>
+                <version>${mockito-core.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
                 <groupId>com.icegreen</groupId>
                 <artifactId>greenmail</artifactId>
                 <version>${greenmail.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.github.stefanbirkner</groupId>
+                <artifactId>system-rules</artifactId>
+                <version>${system-rules.version}</version>
                 <scope>test</scope>
             </dependency>
         </dependencies>
