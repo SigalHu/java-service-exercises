@@ -31,3 +31,6 @@ Java相关工具库、中间件等使用案例
       * 导入和混合配置
       * 环境与profile
       * 条件化的bean
+    * desserteater（参考《Spring实战》第3章），主要包括：
+      * 标示首选的bean
+      * 限定自动装配的bean
