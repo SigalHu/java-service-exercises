@@ -36,3 +36,5 @@ Java相关工具库、中间件等使用案例
       * 限定自动装配的bean
     * person（参考《Spring实战》第3章），主要包括：
       * 运行时注入，包括Spring的Environment/属性占位符/SpEL表达式
+    * aop（参考《Spring实战》第4章），主要包括：
+      * 切点/切面/通知/AspectJ指示器（concert）
