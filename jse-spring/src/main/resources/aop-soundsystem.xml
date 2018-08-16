@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:component-scan base-package="com.sigalhu.jse.spring.aop.soundsystem"/>
+
+    <!--启用自动代理功能-->
+    <aop:aspectj-autoproxy/>
+
+    <bean id="blankDisc" class="com.sigalhu.jse.spring.aop.soundsystem.BlankDisc">
+        <constructor-arg name="title" value="Sgt. Pepper's Lonely Hearts Club Band"/>
+        <constructor-arg name="artist" value="The Beatles"/>
+        <constructor-arg name="tracks">
+            <list>
+                <value>Sgt. Pepper's Lonely Hearts Club Band</value>
+                <value>With a Little Help from My Friends</value>
+                <value>Lucy in the Sky with Diamonds</value>
+                <value>Getting Better</value>
+                <value>Fixing a Hole</value>
+            </list>
+        </constructor-arg>
+    </bean>
+
+    <bean id="trackCounter" class="com.sigalhu.jse.spring.aop.soundsystem.TrackCounter"/>
+
+    <!--顶层的AOP配置元素。大多数的<aop:*>元素必须包含在该元素内-->
+    <aop:config>
+        <!--定义一个切面，ref元素引用的bean提供了在切面中通知所调用的方法-->
+        <aop:aspect ref="trackCounter">
+            <!--该元素将通用的切点表达式抽取到一个切点声明中，这样这个声明就能在所有的通知元素中使用-->
+            <!--切点表达式中包含了一个参数，这个参数会传递到通知方法中-->
+            <!--在xml中，&符号会被解析为实体的开始，因此这里使用and关键字而不是&&-->
+            <aop:pointcut
+                    id="trackPlayed"
+                    expression="execution(* com.sigalhu.jse.spring.aop.soundsystem.BlankDisc.playTrack(int)) and args(trackNumber)"/>
+            <!--定义一个AOP前置通知，用pointcut-ref属性来引用这个命名切点-->
+            <aop:before method="countTrack" pointcut-ref="trackPlayed"/>
+            <!--该元素声明了此切面所通知的bean要在它的对象层次结构中拥有新的父类型-->
+            <aop:declare-parents
+                    types-matching="com.sigalhu.jse.spring.aop.soundsystem.CompactDisc+"
+                    implement-interface="com.sigalhu.jse.spring.aop.soundsystem.Encoreable"
+                    default-impl="com.sigalhu.jse.spring.aop.soundsystem.DefaultEncoreable"/>
+        </aop:aspect>
+    </aop:config>
+</beans>
