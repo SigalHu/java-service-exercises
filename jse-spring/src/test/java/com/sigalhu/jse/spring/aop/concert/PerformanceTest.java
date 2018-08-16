@@ -27,6 +27,9 @@ public class PerformanceTest {
     public void perform() throws Exception {
         goodPerformance.perform();
         System.out.println("===================");
+        ((Encoreable)goodPerformance).performEncore();
+        ((Encoreable)badPerformance).performEncore();
+        System.out.println("===================");
         badPerformance.perform();
     }
 }

@@ -61,4 +61,13 @@ public class Audience {
     public void leave() {
         System.out.println("Leaving");
     }
+
+    //通过该注解将Encoreable接口引入到Performance bean中
+    @DeclareParents(
+            //该属性指定了哪种类型的bean要引入该接口，标记符后面的加号表示是Performance的所有子类型，而不是Performance本身
+            value = "com.sigalhu.jse.spring.aop.concert.Performance+",
+            //该属性指定了为引入功能提供实现的类
+            defaultImpl = DefaultEncoreable.class)
+    //@DeclareParents注解所标注的静态属性指明了要引入的接口
+    public static Encoreable encoreable;
 }
