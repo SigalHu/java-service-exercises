@@ -24,8 +24,10 @@ public class CompactDiscTest {
     @Test
     public void playTrack() {
         cd.playTrack(1);
+        ((Encoreable)cd).playEncore();
         cd.playTrack(2);
         cd.playTrack(2);
+        ((Encoreable)cd).playEncore();
         cd.playTrack(3);
         cd.playTrack(3);
         cd.playTrack(3);
