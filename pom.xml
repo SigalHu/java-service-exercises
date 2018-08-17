@@ -21,7 +21,9 @@
         <aspectj.version>1.7.4</aspectj.version>
 
         <!--third part-->
+        <commons-lang3.version>3.7</commons-lang3.version>
         <mail.version>1.4.1</mail.version>
+        <javax.servlet-api.version>4.0.1</javax.servlet-api.version>
         <dom4j.version>1.6.1</dom4j.version>
         <kaptcha.version>2.3.2</kaptcha.version>
 
@@ -118,9 +120,20 @@
 
             <!--third part-->
             <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>${commons-lang3.version}</version>
+            </dependency>
+            <dependency>
                 <groupId>javax.mail</groupId>
                 <artifactId>mail</artifactId>
                 <version>${mail.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>javax.servlet</groupId>
+                <artifactId>javax.servlet-api</artifactId>
+                <version>${javax.servlet-api.version}</version>
+                <scope>provided</scope>
             </dependency>
             <dependency>
                 <groupId>dom4j</groupId>

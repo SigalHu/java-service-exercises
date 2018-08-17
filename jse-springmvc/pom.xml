@@ -11,6 +11,7 @@
 
     <artifactId>jse-springmvc</artifactId>
     <version>1.0.0-SNAPSHOT</version>
+    <packaging>war</packaging>
 
     <dependencies>
         <!--spring-->
@@ -71,6 +72,16 @@
         <dependency>
             <groupId>org.aspectj</groupId>
             <artifactId>aspectjtools</artifactId>
+        </dependency>
+
+        <!--third part-->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
         </dependency>
 
         <!--test-->
