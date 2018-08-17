@@ -12,6 +12,7 @@
     <modules>
         <module>jse-maven</module>
         <module>jse-spring</module>
+        <module>jse-springmvc</module>
     </modules>
 
     <properties>
