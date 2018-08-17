@@ -23,6 +23,6 @@ public class SpittrWebAppInitializer
     @Override
     protected String[] getServletMappings() {
         //将DispatcherServlet映射到"/"
-        return new String[]{"/", "/homepage", "/spittles"};
+        return new String[]{"/", "/home", "/spittles"};
     }
 }

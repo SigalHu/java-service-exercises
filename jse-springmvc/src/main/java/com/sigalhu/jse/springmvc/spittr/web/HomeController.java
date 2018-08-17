@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 //该注解声明来所要处理的请求
 //value属性指定了该方法所要处理的请求路径
-@RequestMapping({"/", "/homepage"})
+@RequestMapping({"/", "/home"})
 public class HomeController {
 
     //method属性细化了它所处理的Http方法

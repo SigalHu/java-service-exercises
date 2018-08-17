@@ -35,6 +35,8 @@ public class SpittleControllerTest {
         SpittleController spittleController = new SpittleController(spittleRepository);
         MockMvc mockMvc = MockMvcBuilders
                 .standaloneSetup(spittleController)
+                //在MockMvc构造器上调用setSingleView()，这样mock框架就不用解析控制器中的视图名了
+                //对于该控制器方法，由于无法区分视图路径和控制器路径，因此按照默认视图解析规则时，MockMvc会失败
                 .setSingleView(new InternalResourceView("WEB-INF/views/spittles.jsp"))
                 .build();
         mockMvc.perform(MockMvcRequestBuilders.get("/spittles"))
@@ -42,7 +44,6 @@ public class SpittleControllerTest {
                 .andExpect(MockMvcResultMatchers.model().attributeExists("spittleList"))
                 .andExpect(MockMvcResultMatchers.model()
                         .attribute("spittleList", Matchers.hasItems(expectedSpittles.toArray())));
-
     }
 
     private List<Spittle> createSpittleList(int count) {
