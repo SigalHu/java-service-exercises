@@ -43,6 +43,7 @@ public class SpittleController {
     }
 
     //为了实现路径变量，可以在路径中添加占位符，路径中的其他部分要与所处理的请求完全匹配，但是占位符部分可以是任意值
+    //处理对/spittles/{spittleId}的GET请求
     @RequestMapping(value = "/{spittleId}", method = RequestMethod.GET)
     public String spittle(Model model,
                           //该注解表明在请求路径中，不管占位符部分的值是什么都会传递到处理器方法的参数中
