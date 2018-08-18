@@ -24,6 +24,7 @@
         <commons-lang3.version>3.7</commons-lang3.version>
         <mail.version>1.4.1</mail.version>
         <javax.servlet-api.version>4.0.1</javax.servlet-api.version>
+        <javax.el-api.version>3.0.1-b06</javax.el-api.version>
         <dom4j.version>1.6.1</dom4j.version>
         <kaptcha.version>2.3.2</kaptcha.version>
 
@@ -135,6 +136,11 @@
                 <artifactId>javax.servlet-api</artifactId>
                 <version>${javax.servlet-api.version}</version>
                 <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>javax.el</groupId>
+                <artifactId>javax.el-api</artifactId>
+                <version>${javax.el-api.version}</version>
             </dependency>
             <dependency>
                 <groupId>dom4j</groupId>
