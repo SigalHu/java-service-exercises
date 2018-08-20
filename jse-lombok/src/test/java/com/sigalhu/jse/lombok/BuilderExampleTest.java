@@ -14,14 +14,25 @@ public class BuilderExampleTest {
 
     @Test
     public void test() {
-        BuilderExample builderExample = BuilderExample.builder()
-                .name("sigal")
-                .mob("1234567")
-                .sex("male")
+        final String name = "sigal";
+        final String mob = "1234567";
+        final String sex = "male";
+
+        BuilderExample ex1 = BuilderExample.builder()
+                .name(name)
+                .mob(mob)
+                .sex(sex)
                 .build();
-        Assert.assertNotNull(builderExample);
+        Assert.assertNotNull(ex1);
+        Assert.assertEquals(name, ex1.getName());
+        Assert.assertEquals(mob, ex1.getMob());
+        Assert.assertEquals(sex, ex1.getSex());
+
         //builder注解会生成package访问权限的构造函数，因此会隐藏无参构造函数
-        builderExample = new BuilderExample("sigal", "7654321", "male");
-        Assert.assertNotNull(builderExample);
+        BuilderExample ex2 = new BuilderExample(name, mob, sex);
+        Assert.assertNotNull(ex2);
+        Assert.assertEquals(name, ex2.getName());
+        Assert.assertEquals(mob, ex2.getMob());
+        Assert.assertEquals(sex, ex2.getSex());
     }
 }

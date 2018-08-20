@@ -15,7 +15,19 @@ public class BuilderExample {
 
     private String sex;
 
-//    @java.beans.ConstructorProperties({"name", "mob", "sex"})
+    public String getName() {
+        return name;
+    }
+
+    public String getMob() {
+        return mob;
+    }
+
+    public String getSex() {
+        return sex;
+    }
+
+    //    @java.beans.ConstructorProperties({"name", "mob", "sex"})
 //    BuilderExample(String name, String mob, String sex) {
 //        this.name = name;
 //        this.mob = mob;
