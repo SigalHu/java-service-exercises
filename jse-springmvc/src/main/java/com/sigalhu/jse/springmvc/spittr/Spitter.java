@@ -2,6 +2,7 @@ package com.sigalhu.jse.springmvc.spittr;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
+import org.springframework.validation.annotation.Validated;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
@@ -14,6 +15,7 @@ import javax.validation.constraints.Size;
 public class Spitter {
     private Long id;
 
+    //非空，5-16个字符
     @NotNull
     @Size(min=5, max=16)
     private String username;
