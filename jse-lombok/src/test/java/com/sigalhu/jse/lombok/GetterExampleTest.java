@@ -5,9 +5,9 @@ import org.junit.Test;
 
 /**
  * @author huxujun
- * @date 2018/8/21
+ * @date 2018/8/22
  */
-public class SetterExampleTest {
+public class GetterExampleTest {
 
     @Test
     public void test() {
@@ -15,7 +15,7 @@ public class SetterExampleTest {
         final String mob = "1234567";
         final String sex = "male";
 
-        SetterExample ex = new SetterExample();
+        GetterExample ex = new GetterExample();
         ex.setName(name);
         ex.setMob(mob);
         ex.setSex(sex);
