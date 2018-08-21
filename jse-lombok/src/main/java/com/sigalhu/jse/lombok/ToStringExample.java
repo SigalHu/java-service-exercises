@@ -1,13 +1,13 @@
 package com.sigalhu.jse.lombok;
 
-import lombok.Getter;
+import lombok.ToString;
 
 /**
  * @author huxujun
  * @date 2018/8/22
  */
-@Getter
-public class GetterExample {
+@ToString
+public class ToStringExample {
 
     private String name;
 
@@ -27,15 +27,7 @@ public class GetterExample {
         this.sex = sex;
     }
 
-//    public String getName() {
-//        return this.name;
-//    }
-//
-//    public String getMob() {
-//        return this.mob;
-//    }
-//
-//    public String getSex() {
-//        return this.sex;
+//    public String toString() {
+//        return "ToStringExample(name=" + this.getName() + ", mob=" + this.getMob() + ", sex=" + this.getSex() + ")";
 //    }
 }
