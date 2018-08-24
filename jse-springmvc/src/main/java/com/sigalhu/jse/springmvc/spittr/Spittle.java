@@ -28,6 +28,14 @@ public class Spittle {
         this.latitude = latitude;
     }
 
+    public Spittle(Long id, String message, Date time, Double longitude, Double latitude) {
+        this.id = id;
+        this.message = message;
+        this.time = time;
+        this.longitude = longitude;
+        this.latitude = latitude;
+    }
+
     public Long getId() {
         return id;
     }

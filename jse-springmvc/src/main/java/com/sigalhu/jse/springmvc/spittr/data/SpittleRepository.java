@@ -10,6 +10,8 @@ import java.util.List;
  */
 public interface SpittleRepository {
 
+    List<Spittle> findRecentSpittles();
+
     /**
      * 获取Spittle列表
      *
@@ -20,4 +22,6 @@ public interface SpittleRepository {
     List<Spittle> findSpittles(long max, int count);
 
     Spittle findOne(long spittleId);
+
+    void save(Spittle spittle);
 }
