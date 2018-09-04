@@ -12,6 +12,7 @@
     <modules>
         <module>jse-maven</module>
         <module>jse-lombok</module>
+        <module>jse-log</module>
     </modules>
 
     <properties>
