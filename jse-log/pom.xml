@@ -13,6 +13,7 @@
     <version>1.0.0-SNAPSHOT</version>
 
     <dependencies>
+        <!--log4j2-->
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-api</artifactId>

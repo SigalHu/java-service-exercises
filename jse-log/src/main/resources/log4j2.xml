@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--日志级别：TRACE < DEBUG < INFO < WARN < ERROR < FATAL,如果设置为WARN，则低于WARN的信息都不会输出-->
+<!--
+    status : 这个用于设置log4j2自身内部的信息输出,可以不设置,当设置成trace时,会看到log4j2内部各种详细输出
+    monitorInterval : Log4j能够自动检测修改配置文件和重新配置本身, 设置间隔秒数。此处表示每隔300秒重读一次配置文件
+-->
+<Configuration status="ERROR" monitorInterval="300">
+    <!--<properties>-->
+    <!--<property name="LOG_HOME">F:\logs</property>-->
+    <!--<property name="ERROR_LOG_FILE_NAME">error</property>-->
+    <!--</properties>-->
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT"> <!-- 定义类型为Console的Appender -->
+            <PatternLayout pattern="%d{HH:mm:ss} [%level] %c{10} - %msg%n"/> <!-- 定义类型为Pattern的Layout -->
+        </Console>
+    </Appenders>
+    <!--定义logger，只有定义了logger并引入上面的appender，appender才会生效-->
+    <Loggers>
+        <Root level="error"> <!-- 定义Root Logger -->
+            <AppenderRef ref="Console"/> <!-- Root Logger的Appender引用上面定义的Console -->
+        </Root>
+        <!--定义名字为MainLogger的Logger，其日志级别为info，info以下级别的信息将不会输出 -->
+        <Logger name="MainLogger" level="info" additivity="false">
+            <AppenderRef ref="Console"/> <!-- Root Logger的Appender引用上面定义的Console -->
+        </Logger>
+    </Loggers>
+</Configuration>
