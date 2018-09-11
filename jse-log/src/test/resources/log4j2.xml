@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--日志级别：ALL < TRACE < DEBUG < INFO < WARN < ERROR < FATAL < OFF，如果设置为WARN，则低于WARN的信息都不会输出-->
+<!-- status：这个用于设置log4j2自身内部的信息输出，可以不设置，当设置成trace时，会看到log4j2内部各种详细输出 -->
+<!-- monitorInterval：log4j2能够自动检测修改配置文件和重新配置本身，设置间隔秒数，此处表示每隔300秒重读一次配置文件 -->
+<Configuration status="ERROR" monitorInterval="300">
+    <Appenders>
+        <!-- Console节点用来定义输出到控制台的Appender -->
+        <!-- name属性用来指定Appender的名字 -->
+        <!-- target属性可设置为SYSTEM_OUT或SYSTEM_ERR，一般默认设置为SYSTEM_OUT -->
+        <Console name="consoleAppender" target="SYSTEM_OUT">
+            <!-- 定义输出日志的格式，默认为%m%n -->
+            <!--
+                 %d{yyyy-MM-dd HH:mm:ss.SSS}：日志生产时间，输出到毫秒的时间
+                 %-5level：输出日志级别，-5表示左对齐并且固定输出5个字符，如果不足在右边补0
+                 %c：logger的名称(%logger)
+                 %t：输出当前线程名称
+                 %p：日志输出格式
+                 %m：日志内容，即 logger.info("message")
+                 %n：换行符
+                 %C：Java类名(%F)
+                 %L：行号
+                 %M：方法名
+                 %l：输出语句所在的行数，包括类名、方法名、文件名、行数
+                 hostName：本地机器名
+                 hostAddress：本地ip地址
+            -->
+            <PatternLayout pattern="[%d{yyyy-MM-dd HH:mm:ss.SSS}] [%p] -%l -%m%n"/>
+        </Console>
+
+        <!-- File节点用来定义输出到指定位置的文件的Appender -->
+        <!-- name属性用来指定Appender的名字 -->
+        <!-- fileName属性用来指定输出日志的目的文件带全路径的文件名 -->
+        <!-- append属性为true表示消息增加到指定文件中，false表示消息覆盖指定的文件内容，默认值是true -->
+        <File name="infoAppender" fileName="${log.dir}/info.log" append="false">
+            <!-- 定义输出日志的格式，默认为%m%n -->
+            <PatternLayout pattern="[%d{yyyy-MM-dd HH:mm:ss.SSS}] [%p] -%l -%m%n"/>
+        </File>
+
+        <File name="errorAppender" fileName="${log.dir}/error.log">
+            <PatternLayout pattern="[%d{yyyy-MM-dd HH:mm:ss.SSS}] [%p] -%l -%m%n"/>
+        </File>
+
+        <!-- RollingFile节点用来定义循环日志文件Appender，日志文件大于阀值的时候，就开始写一个新的日志文件 -->
+        <!-- name属性用来指定Appender的名字 -->
+        <!-- fileName属性用来指定输出日志的目的文件带全路径的文件名 -->
+        <!-- filePattern指定新建日志文件的名称格式 -->
+        <RollingFile name="warnAppender" fileName="${log.dir}/warn.log"
+                     filePattern="logs/$${date:yyyy-MM}/warn-%d{MM-dd-yyyy}-%i.log.gz">
+            <!-- 定义输出日志的格式，默认为%m%n -->
+            <PatternLayout pattern="[%d{yyyy-MM-dd HH:mm:ss.SSS}] [%p] -%l -%m%n"/>
+            <!-- Policies属性用来指定滚动日志的策略，就是什么时候进行新建日志文件输出日志 -->
+            <Policies>
+                <!-- 基于时间的滚动策略，interval属性用来指定多久滚动一次，默认是1 hour -->
+                <!-- modulate=true用来调整时间，比如现在是早上3am，interval是4，那么第一次滚动是在4am，接着是8am，12am...而不是7am. -->
+                <TimeBasedTriggeringPolicy interval="24" modulate="true"/>
+                <!-- 基于指定文件大小的滚动策略，size属性用来定义每个日志文件的大小 -->
+                <!-- 每次大小超过size，则这size大小的日志会自动存入按年份-月份建立的文件夹下面并进行压缩，作为存档 -->
+                <SizeBasedTriggeringPolicy size="1KB"/>
+            </Policies>
+            <!-- DefaultRolloverStrategy用来指定同一个文件夹下最多有几个日志文件时开始删除最旧的，创建新的(通过max属性) -->
+            <DefaultRolloverStrategy max="20"/>
+        </RollingFile>
+    </Appenders>
+
+    <!--定义logger，只有定义了logger并引入上面的appender，appender才会生效-->
+    <Loggers>
+        <!-- Root节点用来指定项目的根日志，如果没有单独指定Logger，那么就会默认使用该Root日志输出 -->
+        <!-- level属性用来设置日志输出级别 -->
+        <Root level="error">
+            <!-- 该节点用来指定该日志输出到哪个Appender -->
+            <AppenderRef ref="consoleAppender"/>
+        </Root>
+
+        <!-- Logger节点用来单独指定日志的形式 -->
+        <!-- level属性用来设置日志输出级别 -->
+        <!-- name属性用来指定该Logger所适用的类或者类所在的包全路径，继承自Root节点 -->
+        <Logger name="infoLogger" level="info">
+            <!-- 该节点用来指定该日志输出到哪个Appender，如果没有指定，就会默认继承自Root -->
+            <!-- 如果指定了，那么会在指定的这个Appender和Root的Appender中都会输出 -->
+            <!-- 可以设置Logger的additivity="false"只在自定义的Appender中进行输出 -->
+            <AppenderRef ref="infoAppender"/>
+        </Logger>
+
+        <Logger name="warnLogger" level="warn" additivity="false">
+            <AppenderRef ref="warnAppender"/>
+        </Logger>
+
+        <Logger name="errorLogger" level="error" additivity="false">
+            <AppenderRef ref="errorAppender"/>
+        </Logger>
+    </Loggers>
+</Configuration>

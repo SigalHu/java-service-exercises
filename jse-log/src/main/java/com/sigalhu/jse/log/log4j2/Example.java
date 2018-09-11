@@ -8,18 +8,9 @@ import org.apache.logging.log4j.Logger;
  * @date 2018/9/10
  */
 public class Example {
-    /**
-     * 获取log4j2.xml文件中定义的名为“MainLogger”的Logger
-     * 如果没有对应名称的Logger，则无法使用Logger记录和输出日志信息
-     */
-    private static final Logger log = LogManager.getLogger("MainLogger");
-
-    public void info(String msg) {
-        log.info(msg);
-    }
-
-    public void error(String msg) {
-        log.error(msg);
-    }
+    public static final Logger rootLogger = LogManager.getLogger();
+    public static final Logger infoLogger = LogManager.getLogger("infoLogger");
+    public static final Logger warnLogger = LogManager.getLogger("warnLogger");
+    public static final Logger errorLogger = LogManager.getLogger("errorLogger");
 }
 

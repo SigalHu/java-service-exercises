@@ -28,4 +28,23 @@
             <artifactId>junit</artifactId>
         </dependency>
     </dependencies>
+
+    <build>
+        <!-- 可以通过profile来加载不同生产环境的属性文件 -->
+        <filters>
+            <filter>src/test/resources/settings.properties</filter>
+        </filters>
+
+        <testResources>
+            <testResource>
+                <directory>src/test/resources</directory>
+                <!--开启资源过滤，资源文件当中${…}符号会被替换为系统属性或者项目属性的值-->
+                <filtering>true</filtering>
+                <includes>
+                    <include>log4j2.xml</include>
+                    <include>*.properties</include>
+                </includes>
+            </testResource>
+        </testResources>
+    </build>
 </project>
