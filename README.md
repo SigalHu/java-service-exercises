@@ -16,3 +16,8 @@ Java相关工具库、中间件等使用案例
     * jetty-maven-plugin插件的使用
   * mvn-sample-webapp（参考《Maven实战》第4/5/8/10/12章）
     * 使用maven构建web应用
+    
+### 日志
+
+* jse-log，主要包括：
+  * log4j2的使用
