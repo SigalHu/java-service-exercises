@@ -32,12 +32,12 @@
         <!-- name属性用来指定Appender的名字 -->
         <!-- fileName属性用来指定输出日志的目的文件带全路径的文件名 -->
         <!-- append属性为true表示消息增加到指定文件中，false表示消息覆盖指定的文件内容，默认值是true -->
-        <File name="infoAppender" fileName="${log.dir}/info.log" append="false">
+        <File name="infoAppender" fileName="${log4j2.dir}/info.log" append="false">
             <!-- 定义输出日志的格式，默认为%m%n -->
             <PatternLayout pattern="[%d{yyyy-MM-dd HH:mm:ss.SSS}] [%p] -%l -%m%n"/>
         </File>
 
-        <File name="errorAppender" fileName="${log.dir}/error.log">
+        <File name="errorAppender" fileName="${log4j2.dir}/error.log">
             <PatternLayout pattern="[%d{yyyy-MM-dd HH:mm:ss.SSS}] [%p] -%l -%m%n"/>
         </File>
 
@@ -45,7 +45,7 @@
         <!-- name属性用来指定Appender的名字 -->
         <!-- fileName属性用来指定输出日志的目的文件带全路径的文件名 -->
         <!-- filePattern指定新建日志文件的名称格式 -->
-        <RollingFile name="warnAppender" fileName="${log.dir}/warn.log"
+        <RollingFile name="warnAppender" fileName="${log4j2.dir}/warn.log"
                      filePattern="logs/$${date:yyyy-MM}/warn-%d{MM-dd-yyyy}-%i.log.gz">
             <!-- 定义输出日志的格式，默认为%m%n -->
             <PatternLayout pattern="[%d{yyyy-MM-dd HH:mm:ss.SSS}] [%p] -%l -%m%n"/>
