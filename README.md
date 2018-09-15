@@ -49,7 +49,7 @@ Java相关工具库、中间件等使用案例
 
 ### 实用工具
 
-* jse-lombok（参考 https://www.projectlombok.org/features/all），主要包括：
+* jse-lombok（参考[lombok官网](https://www.projectlombok.org/features/all)），主要包括：
   * 语法糖相关（`val/var/@NunNull/@Cleanup`）
   * POJO相关（`@Getter/@Setter/@ToString/@EqualsAndHashCode/@Data/@Value`）
   * 构造相关（`@NoArgsConstructor/@RequiredArgsConstructor/@AllArgsConstructor/@Builder`）
