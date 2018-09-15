@@ -22,3 +22,4 @@ Java相关工具库、中间件等使用案例
 * jse-log，主要包括：
   * log4j的使用
   * log4j2的使用
+  * slf4j搭配log4j或log4j2输出日志
