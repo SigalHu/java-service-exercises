@@ -46,6 +46,11 @@ Java相关工具库、中间件等使用案例
   * log4j的使用
   * log4j2的使用
   * slf4j搭配log4j或log4j2输出日志
+  
+### 单元测试
+
+* jse-junit，主要包括：
+  * 初始化和销毁（StandardTests）
 
 ### 实用工具
 
