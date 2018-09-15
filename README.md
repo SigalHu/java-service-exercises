@@ -16,10 +16,20 @@ Java相关工具库、中间件等使用案例
     * jetty-maven-plugin插件的使用
   * mvn-sample-webapp（参考《Maven实战》第4/5/8/10/12章）
     * 使用maven构建web应用
-    
+        
 ### 日志
 
 * jse-log，主要包括：
   * log4j的使用
   * log4j2的使用
   * slf4j搭配log4j或log4j2输出日志
+
+### 实用工具
+
+* jse-lombok（参考 https://www.projectlombok.org/features/all），主要包括：
+  * 语法糖相关（`val/var/@NunNull/@Cleanup`）
+  * POJO相关（`@Getter/@Setter/@ToString/@EqualsAndHashCode/@Data/@Value`）
+  * 构造相关（`@NoArgsConstructor/@RequiredArgsConstructor/@AllArgsConstructor/@Builder`）
+  * 异常相关（`@SneakyThrows`）
+  * 并发相关（`@Synchronized`）
+  * 日志相关（`@Log`）
