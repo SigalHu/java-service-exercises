@@ -47,6 +47,7 @@
                 <!--开启资源过滤，资源文件当中${…}符号会被替换为系统属性或者项目属性的值-->
                 <filtering>true</filtering>
                 <includes>
+                    <include>log4j.xml</include>
                     <include>log4j2.xml</include>
                     <include>*.properties</include>
                 </includes>
