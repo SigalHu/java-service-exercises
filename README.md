@@ -52,6 +52,7 @@ Java相关工具库、中间件等使用案例
 * jse-junit（参考[junit5官网](https://junit.org/junit5/docs/current/user-guide/#writing-tests)），主要包括：
   * 初始化和销毁（StandardTests）
   * 断言（AssertionsDemo）
+  * 前置条件（AssumptionsDemo）
 
 ### 实用工具
 
