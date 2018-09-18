@@ -53,6 +53,7 @@ Java相关工具库、中间件等使用案例
   * 初始化和销毁（StandardTests）
   * 断言（AssertionsDemo）
   * 前置条件（AssumptionsDemo）
+  * 跳过测试（DisabledDemo）
 
 ### 实用工具
 
