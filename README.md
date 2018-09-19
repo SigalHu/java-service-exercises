@@ -39,6 +39,9 @@ Java相关工具库、中间件等使用案例
     * aop（参考《Spring实战》第4章），主要包括：
       * 通过scan和code方式实现aop（concert）
       * 通过xml方式实现aop（soundsystem）
+    * conflict
+      * 解决bean id冲突
+      * @@Autowired与@Resource的区别
         
 ### 日志
 
