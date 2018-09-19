@@ -1,6 +1,5 @@
 package com.sigalhu.jse.spring.soundsystem.xml;
 
-import java.util.List;
 import java.util.Set;
 
 /**
