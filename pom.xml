@@ -15,6 +15,7 @@
         <module>jse-lombok</module>
         <module>jse-log</module>
         <module>jse-junit</module>
+        <module>jse-mockito</module>
     </modules>
 
     <properties>
