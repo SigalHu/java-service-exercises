@@ -41,7 +41,7 @@ Java相关工具库、中间件等使用案例
       * 通过xml方式实现aop（soundsystem）
     * conflict
       * 解决bean id冲突
-      * @@Autowired与@Resource的区别
+      * @Autowired与@Resource的区别
         
 ### 日志
 
@@ -57,6 +57,8 @@ Java相关工具库、中间件等使用案例
   * 断言（AssertionsDemo）
   * 前置条件（AssumptionsDemo）
   * 跳过测试（DisabledDemo）
+  
+* jse-mockito（参考[mockito 2.22.0](https://static.javadoc.io/org.mockito/mockito-core/2.22.0/org/mockito/Mockito.html)）
 
 ### 实用工具
 
