@@ -2,7 +2,10 @@ package com.sigalhu.jse.mockito;
 
 import org.junit.Test;
 import org.mockito.Mockito;
+import org.mockito.invocation.InvocationOnMock;
+import org.mockito.stubbing.Answer;
 
+import java.util.Arrays;
 import java.util.LinkedList;
 
 /**
@@ -77,5 +80,24 @@ public class StubbingTest {
 
         // 第三次及以后调用，都输出"third"
         System.out.println(mock.get(0));
+    }
+
+    /**
+     * 回调函数作为期望值
+     *
+     * 该特性也是最开始Mockito里面没有的，比较有争议性，建议使用简单的toReturn()和toThrow()来设置期望值即可
+     */
+    @Test
+    public void stubbingWithCallbacks() {
+        LinkedList mockList = Mockito.mock(LinkedList.class);
+
+        Mockito.when(mockList.get(0)).thenAnswer(invocation -> {
+                        Object[] args = invocation.getArguments();
+                        Object mock = invocation.getMock();
+                        return "called with arguments: " + Arrays.toString(args);
+                    });
+
+        //Following prints "called with arguments: [0]"
+        System.out.println(mockList.get(0));
     }
 }
