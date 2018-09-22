@@ -1,6 +1,8 @@
 package com.sigalhu.jse.mockito;
 
+import org.junit.Assert;
 import org.junit.Test;
+import org.mockito.ArgumentCaptor;
 import org.mockito.InOrder;
 import org.mockito.Mockito;
 
@@ -166,5 +168,20 @@ public class VerifyTest {
 
         //下面验证会成功
         Mockito.verifyNoMoreInteractions(mockTwo);
+    }
+
+    /**
+     * 捕获参数
+     */
+    @Test
+    public void capturingArguments() {
+        List mock = Mockito.mock(List.class);
+        ArgumentCaptor<String> argument = ArgumentCaptor.forClass(String.class);
+
+        mock.add("John");
+
+        Mockito.verify(mock).add(argument.capture());
+        Assert.assertEquals("John", argument.getValue());
+
     }
 }
