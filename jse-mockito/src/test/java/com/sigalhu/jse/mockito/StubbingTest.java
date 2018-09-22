@@ -53,4 +53,29 @@ public class StubbingTest {
         //下面会抛出异常，因为设置的返回值是异常
         System.out.println(mockedList.get(1));
     }
+
+    /**
+     * 迭代调用
+     *
+     * 有时我们可以需要调用同一个方法多次，每次需要有不同的返回值（例如迭代），这时我们需要
+     * 对同一个方法设置不同的返回值/期望值
+     */
+    @Test
+    public void stubbingConsecutiveCalls() {
+        LinkedList mock = Mockito.mock(LinkedList.class);
+
+        Mockito.when(mock.get(0))
+                .thenReturn("first")
+                .thenReturn("second")
+                .thenReturn("third");
+
+        // 第一次调用，输出"first"
+        System.out.println(mock.get(0));
+
+        // 第二次调用，输出"second"
+        System.out.println(mock.get(0));
+
+        // 第三次及以后调用，都输出"third"
+        System.out.println(mock.get(0));
+    }
 }
