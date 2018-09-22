@@ -9,17 +9,16 @@ import java.util.List;
  * @author huxujun
  * @date 2018/9/22
  */
+@SuppressWarnings("unchecked")
 public class ArgumentMatchersTest {
 
+    /**
+     * 参数匹配
+     *
+     * 一旦某个方法的参数使用了参数匹配，则该方法所有的参数都得使用参数匹配
+     */
     @Test
-    @SuppressWarnings("unchecked")
-    public void test() {
-
-        /**
-         * 参数匹配
-         *
-         * 一旦某个方法的参数使用了参数匹配，则该方法所有的参数都得使用参数匹配
-         */
+    public void argumentMatchers() {
         //mock creation
         List<String> mockedList = Mockito.mock(List.class);
 

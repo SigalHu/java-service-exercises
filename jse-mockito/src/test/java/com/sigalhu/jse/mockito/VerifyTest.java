@@ -1,6 +1,7 @@
 package com.sigalhu.jse.mockito;
 
 import org.junit.Test;
+import org.mockito.InOrder;
 import org.mockito.Mockito;
 
 import java.util.List;
@@ -9,18 +10,17 @@ import java.util.List;
  * @author huxujun
  * @date 2018/9/22
  */
+@SuppressWarnings("unchecked")
 public class VerifyTest {
 
+    /**
+     * 验证行为
+     *
+     * 一旦一个mock对象被创建，那么该对象所有交互行为都会被记住。
+     * 比如下面例子中它可以记住mockedList某个方法是否被调用过或者被调用过几次。
+     */
     @Test
-    @SuppressWarnings("unchecked")
-    public void test() {
-
-        /**
-         * 验证行为
-         *
-         * 一旦一个mock对象被创建，那么该对象所有交互行为都会被记住。
-         * 比如下面例子中它可以记住mockedList某个方法是否被调用过或者被调用过几次。
-         */
+    public void verifyBehaviour() {
         //mock creation
         List mockedList = Mockito.mock(List.class);
 
@@ -35,12 +35,18 @@ public class VerifyTest {
 
         //下面的验证会失败，因为没有调用过add("two")
         Mockito.verify(mockedList).add("two");
+    }
 
-        /**
-         * 验证调用的具体次数/最少次数/从未调用
-         *
-         * 默认调用一次，所以对于1次我们可以省略掉times(1)
-         */
+    /**
+     * 验证调用的具体次数/最少次数/从未调用
+     *
+     * 默认调用一次，所以对于1次我们可以省略掉times(1)
+     */
+    @Test
+    public void verifyingInvocationsNumber() {
+        //mock creation
+        List mockedList = Mockito.mock(List.class);
+
         //using mock
         mockedList.add("once");
 
@@ -66,5 +72,45 @@ public class VerifyTest {
         Mockito.verify(mockedList, Mockito.atLeastOnce()).add("three times");
         Mockito.verify(mockedList, Mockito.atLeast(2)).add("three times");
         Mockito.verify(mockedList, Mockito.atMost(5)).add("three times");
+    }
+
+    /**
+     * 验证调用顺序
+     *
+     * Mockito对于顺序的验证是比较灵活的，你不必一一验证所有的调用，只需要验证你所需要的即可
+     */
+    @Test
+    public void verificationInOrder() {
+        // A. Single mock whose methods must be invoked in a particular order
+        List singleMock = Mockito.mock(List.class);
+
+        singleMock.add("was added first");
+        singleMock.add("was added second");
+
+        //create an inOrder verifier for a single mock
+        InOrder inOrder = Mockito.inOrder(singleMock);
+
+        //following will make sure that add is first called with "was added first, then with "was added second"
+        inOrder.verify(singleMock).add("was added first");
+        inOrder.verify(singleMock).add("was added second");
+
+        // B. Multiple mocks that must be used in a particular order
+        List firstMock = Mockito.mock(List.class);
+        List secondMock = Mockito.mock(List.class);
+
+        //using mocks
+        firstMock.add("was called first");
+        secondMock.add("was called second");
+
+        //创建InOrder对象时只需要传入你所需要验证顺序的Mock对象即可
+        InOrder inOrder2 = Mockito.inOrder(firstMock, secondMock);
+
+        //下面这两个是正确的，调用顺序正确
+        inOrder2.verify(firstMock).add("was called first");
+        inOrder2.verify(secondMock).add("was called second");
+
+        //下面这两个会失败，因为调用的顺序出错了
+        inOrder.verify(secondMock).add("was called second");
+        inOrder.verify(firstMock).add("was called first");
     }
 }
