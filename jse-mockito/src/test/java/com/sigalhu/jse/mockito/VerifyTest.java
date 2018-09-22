@@ -113,4 +113,30 @@ public class VerifyTest {
         inOrder.verify(secondMock).add("was called second");
         inOrder.verify(firstMock).add("was called first");
     }
+
+    /**
+     * 确保Mock对象从未调用过
+     */
+    @Test
+    public void interactionOnMock() {
+        List mockOne = Mockito.mock(List.class);
+        List mockTwo = Mockito.mock(List.class);
+        List mockThree = Mockito.mock(List.class);
+
+        //mockOne和mockTwo都有调用，mockThree没有
+        mockOne.add("one");
+        mockTwo.add("two");
+
+        //普通的调用验证
+        Mockito.verify(mockOne).add("one");
+
+        //add("two")从未被调用过
+        Mockito.verify(mockOne, Mockito.never()).add("two");
+
+        //下面的验证会失败，因为mockOne和mockTwo都有调用
+        Mockito.verifyZeroInteractions(mockOne, mockTwo);
+
+        //下面验证会成功，因为mockThree没有过调用
+        Mockito.verifyZeroInteractions(mockOne, mockThree);
+    }
 }
