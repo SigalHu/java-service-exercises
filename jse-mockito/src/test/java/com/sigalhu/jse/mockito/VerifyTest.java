@@ -139,4 +139,32 @@ public class VerifyTest {
         //下面验证会成功，因为mockThree没有过调用
         Mockito.verifyZeroInteractions(mockOne, mockThree);
     }
+
+    /**
+     * 寻找冗余的调用
+     *
+     * 不要滥用verifyNoMoreInteractions()方法，只有当需要用的时候再用，滥用会导致不好维护
+     */
+    @Test
+    public void findRedundantInvocations() {
+        //mock creation
+        List mockOne = Mockito.mock(List.class);
+        List mockTwo = Mockito.mock(List.class);
+
+        //using mocks
+        mockOne.add("one");
+        mockOne.add("two");
+
+        mockTwo.add("one");
+
+        Mockito.verify(mockOne).add("one");
+
+        Mockito.verify(mockTwo).add("one");
+
+        //下面验证会失败
+        Mockito.verifyNoMoreInteractions(mockOne);
+
+        //下面验证会成功
+        Mockito.verifyNoMoreInteractions(mockTwo);
+    }
 }
