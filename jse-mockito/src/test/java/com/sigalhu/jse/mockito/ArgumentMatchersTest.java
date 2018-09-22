@@ -6,8 +6,6 @@ import org.mockito.Mockito;
 import java.util.List;
 
 /**
- * 一旦某个方法的参数使用了参数匹配，则该方法所有的参数都得使用参数匹配
- *
  * @author huxujun
  * @date 2018/9/22
  */
@@ -16,6 +14,12 @@ public class ArgumentMatchersTest {
     @Test
     @SuppressWarnings("unchecked")
     public void test() {
+
+        /**
+         * 参数匹配
+         *
+         * 一旦某个方法的参数使用了参数匹配，则该方法所有的参数都得使用参数匹配
+         */
         //mock creation
         List<String> mockedList = Mockito.mock(List.class);
 

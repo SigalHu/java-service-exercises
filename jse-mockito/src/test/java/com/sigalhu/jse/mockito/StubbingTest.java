@@ -6,11 +6,6 @@ import org.mockito.Mockito;
 import java.util.LinkedList;
 
 /**
- * 对于有返回值但没有设置期望值的模拟对象，Mockito会返回相应的默认值，
- * 内置类型int会返回0，boolean返回false，其他则返回null。
- * 这个返回默认值主要是因为Mock对象会覆盖（override）整个被Mock的对象的方法，
- * 所以没有设置期望值的就只能返回默认值了。
- *
  * @author huxujun
  * @date 2018/9/22
  */
@@ -18,6 +13,15 @@ public class StubbingTest {
 
     @Test
     public void test() {
+
+        /**
+         * 返回期望值
+         *
+         * 对于有返回值但没有设置期望值的模拟对象，Mockito会返回相应的默认值，
+         * 内置类型int会返回0，boolean返回false，其他则返回null。
+         * 这个返回默认值主要是因为Mock对象会覆盖（override）整个被Mock的对象的方法，
+         * 所以没有设置期望值的就只能返回默认值了。
+         */
         //我们不仅可以模拟接口还可以模拟具体类
         LinkedList mockedList = Mockito.mock(LinkedList.class);
 

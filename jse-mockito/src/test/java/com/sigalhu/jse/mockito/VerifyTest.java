@@ -6,9 +6,6 @@ import org.mockito.Mockito;
 import java.util.List;
 
 /**
- * 一旦一个mock对象被创建，那么该对象所有交互行为都会被记住。
- * 比如下面例子中它可以记住mockedList某个方法是否被调用过或者被调用过几次。
- *
  * @author huxujun
  * @date 2018/9/22
  */
@@ -17,6 +14,13 @@ public class VerifyTest {
     @Test
     @SuppressWarnings("unchecked")
     public void test() {
+
+        /**
+         * 验证行为
+         *
+         * 一旦一个mock对象被创建，那么该对象所有交互行为都会被记住。
+         * 比如下面例子中它可以记住mockedList某个方法是否被调用过或者被调用过几次。
+         */
         //mock creation
         List mockedList = Mockito.mock(List.class);
 
@@ -32,6 +36,11 @@ public class VerifyTest {
         //下面的验证会失败，因为没有调用过add("two")
         Mockito.verify(mockedList).add("two");
 
+        /**
+         * 验证调用的具体次数/最少次数/从未调用
+         *
+         * 默认调用一次，所以对于1次我们可以省略掉times(1)
+         */
         //using mock
         mockedList.add("once");
 
