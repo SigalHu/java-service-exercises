@@ -100,4 +100,19 @@ public class StubbingTest {
         //Following prints "called with arguments: [0]"
         System.out.println(mockList.get(0));
     }
+
+    /**
+     * void方法常用的stubbing
+     * doReturn()|doThrow()| doAnswer()|doNothing()|doCallRealMethod()
+     */
+    @Test
+    public void stubbingVoids() {
+        LinkedList mockedList = Mockito.mock(LinkedList.class);
+
+        Mockito.doThrow(new RuntimeException())
+                .when(mockedList).clear();
+
+        // 下面调用会抛异常
+        mockedList.clear();
+    }
 }
