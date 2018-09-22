@@ -3,10 +3,7 @@ package com.sigalhu.jse.mockito;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.Mockito;
-import org.mockito.MockitoAnnotations;
+import org.mockito.*;
 import org.mockito.junit.MockitoJUnitRunner;
 
 /**
@@ -27,6 +24,13 @@ public class AnnotationsTest {
      */
     @Mock
     private Kevin kevin;
+
+    /**
+     * Mock对象的方法是不会被真实调用的，Spy则不同，它是真实的去调用那个方法，
+     * 但是你又可以在需要时候对某些方法设置期望的返回值，如果没有设置的话则会真实去调用那个方法
+     */
+    @Spy
+    private Zora zora;
 
 //    @Before
 //    public void initMocks() {
