@@ -1,10 +1,7 @@
 package com.sigalhu.jse.spring.knights;
 
-import org.junit.Assert;
 import org.junit.Test;
 import org.mockito.Mockito;
-
-import static org.junit.Assert.*;
 
 /**
  * @author huxujun
