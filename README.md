@@ -42,6 +42,9 @@ Java相关工具库、中间件等使用案例
     * conflict
       * 解决bean id冲突
       * @Autowired与@Resource的区别
+    * mockito
+      * 使用mockito对bean进行mock和spy
+      * 将mock和spy注入到代理bean
         
 ### 日志
 
