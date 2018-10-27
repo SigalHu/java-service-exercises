@@ -31,7 +31,15 @@ public class SpittrWebAppInitializer
 
     @Override
     protected void customizeRegistration(ServletRegistration.Dynamic registration) {
-        registration.setMultipartConfig(new MultipartConfigElement("/tmp/spittr/uploads"));
+        registration.setMultipartConfig(new MultipartConfigElement(
+                //必须要指定在文件上传的过程中，所写入的临时文件绝对路径
+                "/tmp/spittr/uploads",
+                //限制上传文件的大小不超过2MB
+                2 * 1024 * 1024,
+                //限制整个multipart请求的大小不超过4MB
+                4 * 1024 * 1024,
+                //最大内存大小设置为0字节，因此不管文件的大小如何，都会写到磁盘中
+                0));
         super.customizeRegistration(registration);
     }
 }

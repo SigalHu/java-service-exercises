@@ -10,6 +10,8 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestPart;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
 
@@ -37,6 +39,7 @@ public class SpitterController {
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     //Spitter对象的属性将会使用请求中同名的参数进行填充
     public String processRegistration(
+            @RequestPart("profilePicture") MultipartFile profilePicture,
             //使用该注解标注要校验的参数
             @Valid Spitter spitter,
             //Errors参数要紧跟在带有@Valid注解的参数后面
