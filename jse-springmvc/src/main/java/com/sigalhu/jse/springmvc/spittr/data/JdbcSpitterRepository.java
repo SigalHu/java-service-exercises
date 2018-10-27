@@ -8,9 +8,13 @@ import org.springframework.stereotype.Repository;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.Map;
 
 @Repository
 public class JdbcSpitterRepository implements SpitterRepository {
+
+    private static Map<String, Spitter> CACHE = new HashMap<>();
 
     @Autowired(required = false)
     private JdbcOperations jdbc;
@@ -18,7 +22,8 @@ public class JdbcSpitterRepository implements SpitterRepository {
     @Override
     public Spitter save(Spitter spitter) {
         if (jdbc == null) {
-            return null;
+            CACHE.put(spitter.getUsername(), spitter);
+            return spitter;
         }
 
         jdbc.update(
@@ -35,7 +40,7 @@ public class JdbcSpitterRepository implements SpitterRepository {
     @Override
     public Spitter findByUsername(String username) {
         if (jdbc == null) {
-            return null;
+            return CACHE.get(username);
         }
 
         return jdbc.queryForObject(
