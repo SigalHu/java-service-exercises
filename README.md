@@ -45,6 +45,12 @@ Java相关工具库、中间件等使用案例
     * mockito
       * 使用mockito对bean进行mock和spy
       * 将mock和spy注入到代理bean
+      
+  * jse-springmvc
+    * springmvc-spittr（参考《Spring实战》第5/7章）
+      * 控制器、为控制器添加通知
+      * 请求输入、表单处理、multipart形式数据处理
+      * 异常处理、跨重定向请求传递数据
         
 ### 日志
 
