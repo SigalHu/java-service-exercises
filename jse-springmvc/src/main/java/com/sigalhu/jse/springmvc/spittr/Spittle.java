@@ -10,12 +10,15 @@ import java.util.Date;
  * @date 2018/8/17
  */
 public class Spittle {
-    private final Long id;
-    private final String message;
-    private final Date time;
-    private final Double latitude;
-    private final Double longitude;
+    private Long id;
+    private String message;
+    private Date time;
+    private Double latitude;
+    private Double longitude;
 
+    public Spittle() {
+    }
+    
     public Spittle(String message, Date time) {
         this(message, time, null, null);
     }
@@ -40,20 +43,40 @@ public class Spittle {
         return id;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public String getMessage() {
         return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
     }
 
     public Date getTime() {
         return time;
     }
 
-    public Double getLongitude() {
-        return longitude;
+    public void setTime(Date time) {
+        this.time = time;
     }
 
     public Double getLatitude() {
         return latitude;
+    }
+
+    public void setLatitude(Double latitude) {
+        this.latitude = latitude;
+    }
+
+    public Double getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(Double longitude) {
+        this.longitude = longitude;
     }
 
     @Override

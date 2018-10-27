@@ -1,13 +1,15 @@
 package com.sigalhu.jse.springmvc.spittr.web;
 
+import com.sigalhu.jse.springmvc.spittr.Spittle;
 import com.sigalhu.jse.springmvc.spittr.data.SpittleRepository;
+import com.sigalhu.jse.springmvc.spittr.exception.DuplicateSpittleException;
+import com.sigalhu.jse.springmvc.spittr.exception.SpittleNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Date;
 
 /**
  * @author huxujun
@@ -49,7 +51,28 @@ public class SpittleController {
                           //该注解表明在请求路径中，不管占位符部分的值是什么都会传递到处理器方法的参数中
                           //因为方法的参数名与占位符名称相同，因此可以去掉@PathVariable中的value属性
                           @PathVariable("spittleId") long spittleId) {
-        model.addAttribute(spittleRepository.findOne(spittleId));
+        Spittle spittle = spittleRepository.findOne(spittleId);
+        if (spittle == null) {
+            throw new SpittleNotFoundException();
+        }
+        model.addAttribute(spittle);
         return "spittle";
+    }
+
+    @RequestMapping(method = RequestMethod.POST)
+    public String saveSpittle(Spittle spittle, Model model) {
+        try {
+            spittleRepository.save(new Spittle(System.currentTimeMillis(), spittle.getMessage(), new Date(),
+                    spittle.getLongitude(), spittle.getLatitude()));
+            return "redirect:/spittles";
+        } catch (DuplicateSpittleException e) {
+            return "error/duplicate";
+        }
+    }
+
+    //添加该注解，当该控制器抛出指定异常时，将会委托该方法来处理
+    @ExceptionHandler(DuplicateSpittleException.class)
+    public String handleNotFound() {
+        return "error/duplicate";
     }
 }
