@@ -14,9 +14,13 @@
         <input type="hidden" name="latitude">
         <input type="hidden" name="longitude">
         <textarea name="message" cols="80" rows="5"></textarea><br/>
+        <input type="hidden"
+               name="${_csrf.parameterName}"
+               value="${_csrf.token}" />
         <input type="submit" value="Add"/>
     </form>
 </div>
+<a href="<c:url value="/logout" />">Logout</a>
 <div class="listTitle">
     <h1>Recent Spittles</h1>
     <ul class="spittleList">

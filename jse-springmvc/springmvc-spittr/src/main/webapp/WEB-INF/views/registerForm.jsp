@@ -17,6 +17,9 @@
     Password: <input type="password" name="password"/><br/>
     Profile Picture:<input type="file" name="profilePicture"
                            accept="image/jpeg,image/png,image/gif" /><br/>
+    <input type="hidden"
+           name="${_csrf.parameterName}"
+           value="${_csrf.token}" />
     <input type="submit" value="Register"/>
 </form>
 </body>
