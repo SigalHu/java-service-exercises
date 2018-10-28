@@ -1,11 +1,13 @@
 package com.sigalhu.jse.springmvc.spittr.config;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.web.authentication.rememberme.InMemoryTokenRepositoryImpl;
 
 /**
@@ -16,6 +18,9 @@ import org.springframework.security.web.authentication.rememberme.InMemoryTokenR
 //启用Web安全性
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
+
+    @Autowired
+    private UserDetailsService userDetailsService;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -53,8 +58,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and().authorizeRequests()
                 //指定了对/spitter/me路径的请求需要进行认证
                 .antMatchers("/spitter/me").authenticated()
-                //对/spittles路径的POST请求必须要经过认证
-                .antMatchers(HttpMethod.POST, "/spittles").authenticated()
+                //对/spittles路径的POST请求必须要经过认证，且用户要具备给定角色的权限
+                .antMatchers(HttpMethod.POST, "/spittles").hasRole("SPITTER")
                 //其他所有的请求都是允许的，不需要认证和任何的权限
                 .anyRequest().permitAll()
 
@@ -68,8 +73,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        //通过inMemoryAuthentication()方法，我们可以启用、配置并任意填充基于内存的用户存储
-        auth.inMemoryAuthentication()
+        //配置自定义的用户服务
+        auth.userDetailsService(userDetailsService);
+        /*
+                //通过inMemoryAuthentication()方法，我们可以启用、配置并任意填充基于内存的用户存储
+                .inMemoryAuthentication()
                 //调用withUser()方法为内存用户存储添加新的用户
                 .withUser("sigalhu")
                 //设置密码
@@ -78,7 +86,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .roles("USER")
                 .and()
                 .withUser("admin").password("123456").roles("USER", "ADMIN");
-
+        */
     }
 
 

@@ -1,6 +1,7 @@
 package com.sigalhu.jse.springmvc.spittr.data;
 
 import com.sigalhu.jse.springmvc.spittr.Spitter;
+import com.sigalhu.jse.springmvc.spittr.exception.DuplicateSpitterException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcOperations;
 import org.springframework.jdbc.core.RowMapper;
@@ -22,6 +23,9 @@ public class JdbcSpitterRepository implements SpitterRepository {
     @Override
     public Spitter save(Spitter spitter) {
         if (jdbc == null) {
+            if (CACHE.containsKey(spitter.getUsername())) {
+                throw new DuplicateSpitterException();
+            }
             CACHE.put(spitter.getUsername(), spitter);
             return spitter;
         }
