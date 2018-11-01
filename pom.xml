@@ -17,7 +17,7 @@
         <module>jse-log</module>
         <module>jse-junit</module>
         <module>jse-mockito</module>
-        <module>jse-spring-mongo</module>
+        <module>jse-mongodb</module>
     </modules>
 
     <properties>
