@@ -56,7 +56,9 @@ Java相关工具库、中间件等使用案例
 ### 数据库
 
 * jse-mongodb
-  * mongo-spring-data
+  * mongo-spring-data（参考《Spring实战》第12章）
+    * 使用MongoTemplate访问MongoDB
+    * 编写MongoDB Repository
         
 ### 日志
 
