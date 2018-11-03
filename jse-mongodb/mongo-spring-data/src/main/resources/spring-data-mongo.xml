@@ -35,20 +35,18 @@
 
     <mongo:db-factory id="mongoDbFactory" dbname="${mongo.db.name}" mongo-ref="mongo"/>
 
-    <bean id="mappingMongoConverter"
-          class="org.springframework.data.mongodb.core.convert.MappingMongoConverter">
-        <constructor-arg name="mongoDbFactory"
-                         ref="mongoDbFactory"/>
-        <constructor-arg name="mappingContext"
-                         ref="mappingContext"/>
-        <property name="typeMapper" ref="defaultMongoTypeMapper"/>
-    </bean>
+    <mongo:mapping-converter
+            id="mappingMongoConverter"
+            db-factory-ref="mongoDbFactory"
+            mapping-context-ref="mappingContext"
+            type-mapper-ref="defaultMongoTypeMapper"/>
 
-    <bean id="mongoTemplate"
-          class="org.springframework.data.mongodb.core.MongoTemplate">
-        <constructor-arg name="mongoDbFactory"
-                         ref="mongoDbFactory"/>
-        <constructor-arg name="mongoConverter"
-                         ref="mappingMongoConverter"/>
-    </bean>
+    <mongo:template
+            id="mongoTemplate"
+            db-factory-ref="mongoDbFactory"
+            converter-ref="mappingMongoConverter"/>
+
+    <mongo:repositories
+            base-package="com.sigalhu.jse.spring.data.mongo.repository"
+            mongo-template-ref="mongoTemplate"/>
 </beans>
