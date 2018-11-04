@@ -3,6 +3,7 @@ package com.sigalhu.jse.spring.data.mongo.repository;
 import com.sigalhu.jse.spring.data.mongo.dataobject.BlogInfoDO;
 import com.sigalhu.jse.spring.data.mongo.repository.operations.BlogInfoOperations;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.mongodb.repository.CountQuery;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.repository.RepositoryDefinition;
 
@@ -19,6 +20,7 @@ import java.util.List;
 //@RepositoryDefinition(domainClass = BlogInfoDO.class, idClass = String.class)
 public interface BlogInfoRepository extends MyBaseRepository<BlogInfoDO, String>, BlogInfoOperations {
 
+//    @CountQuery("{'nickname':?0}")
     Integer countByAuthor(String author);
 
     List<BlogInfoDO> findByAuthor(String author, Pageable pageable);
