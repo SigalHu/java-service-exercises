@@ -61,7 +61,13 @@ public class MongoRepositoryTest extends BaseTest {
     @Test
     public void findTop2ByCreateTimeBetweenAndUpdateTimeBetween() {
         LocalDateTime localDateTime = LocalDateTime.parse("2018-11-03T00:00:00");
+        //查询推导中使用了缓存，第二次未查找mongo，分布式下数据可能不一致
         List<BlogInfoDO> blogInfoDOS = blogInfoRepository.findTop2ByCreateTimeBetweenAndUpdateTimeBetween(
+                Date.from(localDateTime.toInstant(ZoneOffset.UTC)),
+                Date.from(localDateTime.plusDays(1).toInstant(ZoneOffset.UTC)),
+                Date.from(localDateTime.toInstant(ZoneOffset.UTC)),
+                Date.from(localDateTime.plusDays(1).toInstant(ZoneOffset.UTC)));
+        blogInfoDOS = blogInfoRepository.findTop2ByCreateTimeBetweenAndUpdateTimeBetween(
                 Date.from(localDateTime.toInstant(ZoneOffset.UTC)),
                 Date.from(localDateTime.plusDays(1).toInstant(ZoneOffset.UTC)),
                 Date.from(localDateTime.toInstant(ZoneOffset.UTC)),
