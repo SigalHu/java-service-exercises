@@ -30,8 +30,6 @@ public class MongoRepositoryTest extends BaseTest {
                 .author("sigal")
                 .title("study java")
                 .name("test")
-                .createTime(new Date())
-                .updateTime(new Date())
                 .build();
     }
 

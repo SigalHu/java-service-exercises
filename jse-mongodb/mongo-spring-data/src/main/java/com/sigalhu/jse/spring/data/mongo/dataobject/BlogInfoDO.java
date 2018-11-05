@@ -1,8 +1,8 @@
 package com.sigalhu.jse.spring.data.mongo.dataobject;
 
 import lombok.*;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.annotation.Transient;
+import org.springframework.data.annotation.*;
+import org.springframework.data.domain.Persistable;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
@@ -27,10 +27,11 @@ public class BlogInfoDO {
     @Id
     private String id;
 
+    @ReadOnlyProperty
     private String title;
 
     /**
-     * 为文档域指定自定义的元数据
+     * 为文档域指定自定义的元数据，value有内容时有效
      */
     @Field(value = "nickname")
     private String author;
@@ -41,8 +42,13 @@ public class BlogInfoDO {
     @Transient
     private String name;
 
-    private Date createTime;
+    @CreatedBy
+    private String createBy;
 
+    @CreatedDate
+    private Long createTime;
+
+    @LastModifiedDate
     private Date updateTime;
 
     private List<Comment> comments;

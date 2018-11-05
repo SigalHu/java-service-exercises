@@ -6,10 +6,13 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/data/mongo http://www.springframework.org/schema/data/mongo/spring-mongo.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
     <context:property-placeholder location="classpath*:settings.properties"/>
+    <context:component-scan base-package="com.sigalhu.jse.spring.data.mongo"/>
 
     <!-- mongo setting -->
     <bean id="mappingContext"
           class="org.springframework.data.mongodb.core.mapping.MongoMappingContext"/>
+
+    <mongo:auditing mapping-context-ref="mappingContext" auditor-aware-ref="defaultAuditorAware"/>
 
     <bean id="defaultMongoTypeMapper"
           class="org.springframework.data.mongodb.core.convert.DefaultMongoTypeMapper">
