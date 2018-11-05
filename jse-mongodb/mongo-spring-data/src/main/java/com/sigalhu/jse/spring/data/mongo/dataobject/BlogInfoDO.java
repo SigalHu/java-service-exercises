@@ -27,6 +27,9 @@ public class BlogInfoDO {
     @Id
     private String id;
 
+    /**
+     * 插入时不持久化，但可以更新
+     */
     @ReadOnlyProperty
     private String title;
 
@@ -37,16 +40,17 @@ public class BlogInfoDO {
     private String author;
 
     /**
-     * 除非将属性设置为瞬时态的，否则java对象中的所有域都会持久化为文档中的域
+     * 除非将属性设置为瞬时态的，否则java对象中的所有域都会持久化为文档中的域，持久化该字段会抛异常
      */
     @Transient
     private String name;
 
-    @CreatedBy
-    private String createBy;
-
     @CreatedDate
     private Long createTime;
+
+    //todo
+    @LastModifiedBy
+    private String lastModifiedBy;
 
     @LastModifiedDate
     private Date updateTime;

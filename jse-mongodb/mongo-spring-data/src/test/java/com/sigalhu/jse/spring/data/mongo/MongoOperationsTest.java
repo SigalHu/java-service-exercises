@@ -60,9 +60,10 @@ public class MongoOperationsTest extends BaseTest {
     @Test
     public void updateFirst() {
         WriteResult writeResult = mongoOperations.updateFirst(
-                Query.query(Criteria.where("_id").is("5be086d0926efe0065ea4a5d")),
+                Query.query(Criteria.where("_id").is("5be08b6b926ee3be0598b8d3")),
                 new Update()
                         .set("createTime", new Date().getTime())
+//                        .set("lastModifiedBy", "sigal")
                         .set("title", "1111"),
                 BlogInfoDO.class);
         Assert.assertTrue(writeResult.isUpdateOfExisting());
