@@ -14,6 +14,6 @@ public class DefaultAuditorAware implements AuditorAware<Object> {
 
     @Override
     public Object getCurrentAuditor() {
-        return "AAAAAA";
+        return null;
     }
 }

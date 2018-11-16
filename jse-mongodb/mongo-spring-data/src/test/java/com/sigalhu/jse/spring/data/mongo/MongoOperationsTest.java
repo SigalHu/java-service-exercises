@@ -60,9 +60,9 @@ public class MongoOperationsTest extends BaseTest {
     @Test
     public void updateFirst() {
         WriteResult writeResult = mongoOperations.updateFirst(
-                Query.query(Criteria.where("_id").is("5be08b6b926ee3be0598b8d3")),
+                Query.query(Criteria.where("_id").is("5be0fc32b64ab7de9cf2c019")),
                 new Update()
-                        .set("createTime", new Date().getTime())
+//                        .set("createTime", new Date().getTime())
 //                        .set("lastModifiedBy", "sigal")
                         .set("title", "1111"),
                 BlogInfoDO.class);
