@@ -17,6 +17,7 @@
         <module>jse-log</module>
         <module>jse-junit</module>
         <module>jse-mockito</module>
+        <module>jse-cglib</module>
     </modules>
 
     <properties>
@@ -26,6 +27,7 @@
 
         <!--third part-->
         <commons-lang3.version>3.7</commons-lang3.version>
+        <cglib.version>3.2.9</cglib.version>
         <mail.version>1.4.1</mail.version>
         <javax.servlet-api.version>4.0.1</javax.servlet-api.version>
         <javax.el-api.version>3.0.1-b06</javax.el-api.version>
@@ -184,6 +186,11 @@
                 <artifactId>lombok</artifactId>
                 <version>${lombok.version}</version>
                 <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>cglib</groupId>
+                <artifactId>cglib</artifactId>
+                <version>${cglib.version}</version>
             </dependency>
             <!--log4j-->
             <dependency>
