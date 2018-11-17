@@ -88,4 +88,4 @@ Java相关工具库、中间件等使用案例
 * jse-cglib（参考[CGLib 使用手册](https://www.jianshu.com/p/76a12f333e7a)）
   * 回调过滤（`CallbackFilter`）
   * 拦截器（`FixedValue/MethodInterceptor/NoOp.INSTANCE`）
-  * 延迟加载(`LazyLoader`)
+  * 延迟加载(`LazyLoader/Dispatcher`)
