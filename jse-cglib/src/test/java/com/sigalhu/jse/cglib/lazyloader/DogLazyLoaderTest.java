@@ -18,6 +18,10 @@ public class DogLazyLoaderTest {
         System.out.println("End DogLazyLoader DogLazyLoader()");
         System.out.println();
         System.out.println("Start DogLazyLoader dogBark()");
+        dogLazyLoader.dogBark();
+        System.out.println("End DogLazyLoader dogBark()");
+        System.out.println();
+        System.out.println("Start DogLazyLoader dogBark()");
         String bark = dogLazyLoader.dogBark();
         System.out.println("End DogLazyLoader dogBark()");
 
