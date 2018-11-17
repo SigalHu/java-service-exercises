@@ -11,10 +11,10 @@ import org.junit.Test;
 public class DogEnhancerTest {
 
     @Test
-    public void invoke() {
+    public void test() {
         Dog proxyDog = DogEnhancer.create();
         Assert.assertNotEquals(Dog.class, proxyDog.getClass());
         Assert.assertEquals("Hello cglib!", proxyDog.toString());
-        Assert.assertEquals("[cglib] Dog bark: wow wow wow! --- Tom", proxyDog.bark("Tom"));
+        Assert.assertEquals("[cglib] Dog bark: wow wow wow! --- DogEnhancer", proxyDog.bark());
     }
 }

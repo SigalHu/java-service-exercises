@@ -44,7 +44,9 @@ public class DogEnhancer implements CallbackFilter {
                 //NoOp表示no operator，即什么操作也不做，代理类直接调用被代理的方法不进行拦截。
                 NoOp.INSTANCE
         });
-        return (Dog) enhancer.create();
+        return (Dog) enhancer.create(
+                new Class[]{String.class},
+                new Object[]{"DogEnhancer"});
     }
 
     /**
