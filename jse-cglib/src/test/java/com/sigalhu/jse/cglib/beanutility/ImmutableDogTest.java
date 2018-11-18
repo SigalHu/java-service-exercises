@@ -1,4 +1,4 @@
-package com.sigalhu.jse.cglib.bean.immutable;
+package com.sigalhu.jse.cglib.beanutility;
 
 import com.sigalhu.jse.cglib.targetobject.Dog;
 import org.junit.Assert;
