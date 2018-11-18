@@ -89,4 +89,4 @@ Java相关工具库、中间件等使用案例
   * 回调过滤（`CallbackFilter`）
   * 拦截器（`FixedValue/MethodInterceptor/NoOp.INSTANCE`）
   * 延迟加载(`LazyLoader/Dispatcher/ProxyRefDispatcher`)
-  * bean操作（`ImmutableBean/BeanGenerator`）
+  * bean操作（`ImmutableBean/BeanGenerator/BeanCopier`）
