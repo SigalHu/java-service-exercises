@@ -1,6 +1,6 @@
 package com.sigalhu.jse.cglib.beanutility;
 
-import com.sigalhu.jse.cglib.targetobject.Dog;
+import com.sigalhu.jse.cglib.targetobject.DogImpl;
 import net.sf.cglib.beans.BeanGenerator;
 
 /**
@@ -9,10 +9,10 @@ import net.sf.cglib.beans.BeanGenerator;
  */
 public class DogGenerator {
 
-    public static Dog create() {
+    public static DogImpl create() {
         BeanGenerator generator = new BeanGenerator();
-        generator.setSuperclass(Dog.class);
-        Dog dog = (Dog) generator.create();
+        generator.setSuperclass(DogImpl.class);
+        DogImpl dog = (DogImpl) generator.create();
         dog.setName("DogGenerator");
         return dog;
     }

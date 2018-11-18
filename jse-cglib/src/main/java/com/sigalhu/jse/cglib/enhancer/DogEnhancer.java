@@ -1,6 +1,6 @@
 package com.sigalhu.jse.cglib.enhancer;
 
-import com.sigalhu.jse.cglib.targetobject.Dog;
+import com.sigalhu.jse.cglib.targetobject.DogImpl;
 import net.sf.cglib.proxy.*;
 
 import java.lang.reflect.Method;
@@ -13,10 +13,10 @@ import java.lang.reflect.Method;
  */
 public class DogEnhancer implements CallbackFilter {
 
-    public static Dog create() {
+    public static DogImpl create() {
         Enhancer enhancer = new Enhancer();
         //设置产生的代理对象的父类
-        enhancer.setSuperclass(Dog.class);
+        enhancer.setSuperclass(DogImpl.class);
         //设置方法回调过滤器
         enhancer.setCallbackFilter(new DogEnhancer());
         //设置多个CallBack接口的实例
@@ -51,7 +51,7 @@ public class DogEnhancer implements CallbackFilter {
                 NoOp.INSTANCE
         });
         //使用有参数的构造函数创建目标对象。参数Class[]定义了参数的类型，第二个Object[]是参数的值
-        return (Dog) enhancer.create(
+        return (DogImpl) enhancer.create(
                 new Class[]{String.class},
                 new Object[]{"DogEnhancer"});
     }
@@ -65,7 +65,7 @@ public class DogEnhancer implements CallbackFilter {
     @Override
     public int accept(Method method) {
         if (method.getReturnType().equals(String.class)) {
-            if (!Dog.class.equals(method.getDeclaringClass())) {
+            if (!DogImpl.class.equals(method.getDeclaringClass())) {
                 return 0;
             } else {
                 return 1;

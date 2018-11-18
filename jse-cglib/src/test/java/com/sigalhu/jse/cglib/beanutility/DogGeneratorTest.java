@@ -1,6 +1,6 @@
 package com.sigalhu.jse.cglib.beanutility;
 
-import com.sigalhu.jse.cglib.targetobject.Dog;
+import com.sigalhu.jse.cglib.targetobject.DogImpl;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -12,9 +12,9 @@ public class DogGeneratorTest {
 
     @Test
     public void test() {
-        Dog dog = DogGenerator.create();
+        DogImpl dog = DogGenerator.create();
         Assert.assertNotNull(dog);
         Assert.assertEquals("DogGenerator", dog.getName());
-        Assert.assertEquals("Dog bark: wow wow wow! --- DogGenerator", dog.bark());
+        Assert.assertEquals("Dog bark: wow wow wow! --- DogGenerator", dog.dogBark());
     }
 }

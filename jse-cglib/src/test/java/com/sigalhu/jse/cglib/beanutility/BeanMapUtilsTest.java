@@ -1,6 +1,6 @@
 package com.sigalhu.jse.cglib.beanutility;
 
-import com.sigalhu.jse.cglib.targetobject.Dog;
+import com.sigalhu.jse.cglib.targetobject.DogImpl;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -14,7 +14,7 @@ public class BeanMapUtilsTest {
 
     @Test
     public void convertToMap() {
-        Dog dog = new Dog("BeanMapUtilsTest");
+        DogImpl dog = new DogImpl("BeanMapUtilsTest");
         Map<String, Object> map = BeanMapUtils.convertToMap(dog);
         Assert.assertEquals("BeanMapUtilsTest", map.get("name"));
 

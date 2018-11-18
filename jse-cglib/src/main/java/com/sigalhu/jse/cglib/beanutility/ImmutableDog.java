@@ -1,6 +1,6 @@
 package com.sigalhu.jse.cglib.beanutility;
 
-import com.sigalhu.jse.cglib.targetobject.Dog;
+import com.sigalhu.jse.cglib.targetobject.DogImpl;
 import net.sf.cglib.beans.ImmutableBean;
 
 /**
@@ -9,9 +9,9 @@ import net.sf.cglib.beans.ImmutableBean;
  */
 public class ImmutableDog {
 
-    public static Dog create() {
-        Dog dog = new Dog();
+    public static DogImpl create() {
+        DogImpl dog = new DogImpl();
         dog.setName("ImmutableDog");
-        return (Dog) ImmutableBean.create(dog);
+        return (DogImpl) ImmutableBean.create(dog);
     }
 }
