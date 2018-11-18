@@ -15,8 +15,11 @@ public class DogEnhancer implements CallbackFilter {
 
     public static Dog create() {
         Enhancer enhancer = new Enhancer();
+        //设置产生的代理对象的父类
         enhancer.setSuperclass(Dog.class);
+        //设置方法回调过滤器
         enhancer.setCallbackFilter(new DogEnhancer());
+        //设置多个CallBack接口的实例
         enhancer.setCallbacks(new Callback[]{
                 //锁定方法返回值，无论被代理类的方法返回什么值，回调方法都返回固定值。
                 new FixedValue() {
@@ -26,6 +29,9 @@ public class DogEnhancer implements CallbackFilter {
                     }
                 },
                 //在调用目标方法时，cglib会回调MethodInterceptor接口方法拦截，来实现你自己的代理逻辑
+                //注意：
+                //1、若原方法的参数存在基本类型，则对于第三个参数Object[] args会被转化成类的类型
+                //2、若原方法为final方法，则MethodInterceptor接口无法拦截该方法
                 new MethodInterceptor() {
                     /**
                      * @param obj    由cglib动态生成的代理类实例
@@ -44,6 +50,7 @@ public class DogEnhancer implements CallbackFilter {
                 //NoOp表示no operator，即什么操作也不做，代理类直接调用被代理的方法不进行拦截。
                 NoOp.INSTANCE
         });
+        //使用有参数的构造函数创建目标对象。参数Class[]定义了参数的类型，第二个Object[]是参数的值
         return (Dog) enhancer.create(
                 new Class[]{String.class},
                 new Object[]{"DogEnhancer"});
