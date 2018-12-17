@@ -9,7 +9,7 @@ import org.springframework.context.annotation.ImportResource;
  * @date 2018/8/10
  */
 @Configuration
-//@Import(CodePersonConfig.class)
-@ImportResource("classpath*:code-person.xml")
+@Import(CodePersonConfig.class)
+//@ImportResource("classpath*:code-person.xml")
 public class PersonConfig {
 }
