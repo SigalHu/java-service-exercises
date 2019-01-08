@@ -1,10 +1,19 @@
 package com.sigalhu.jse.spring.person.config;
 
 import com.sigalhu.jse.spring.person.CodePerson;
+import com.sigalhu.jse.spring.person.ScanPerson;
+import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.config.PropertyPlaceholderConfigurer;
+import org.springframework.context.EmbeddedValueResolverAware;
+import org.springframework.context.EnvironmentAware;
 import org.springframework.context.annotation.*;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.core.env.Environment;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
+import org.springframework.util.ResourceUtils;
+import org.springframework.util.StringValueResolver;
 
 import java.nio.charset.StandardCharsets;
 
@@ -16,14 +25,16 @@ import java.nio.charset.StandardCharsets;
 @ComponentScan(basePackageClasses = CodePerson.class)
 //声明属性源
 @PropertySource("classpath:person.properties")
-public class CodePersonConfig {
+public class CodePersonConfig implements EmbeddedValueResolverAware {
 
     //属性文件会加载到Spring的Environment中
     @Autowired
-    Environment environment;
+    private Environment environment;
+
+    private StringValueResolver resolver;
 
     @Bean
-    public CodePerson codePerson() {
+    public CodePerson codePerson2() {
         CodePerson person = new CodePerson();
         person.setName(environment.getProperty("code.person.name"));
         //将String类型的值转化为Integer类型
@@ -36,9 +47,24 @@ public class CodePersonConfig {
         return person;
     }
 
-    //为了使用占位符必须配置一个PropertySourcesPlaceholderConfigurer bean
+    @Bean
+    public ScanPerson scanPerson() {
+        ScanPerson person = new ScanPerson();
+        person.setName(resolver.resolveStringValue("${scan.person.name}"));
+        person.setAge(Integer.valueOf(resolver.resolveStringValue("${scan.person.age}")));
+        person.setMob(resolver.resolveStringValue("${scan.person.mob}"));
+        person.setSex(resolver.resolveStringValue("${scan.person.sex}"));
+        return person;
+    }
+
+    //为了解析@Value和StringValueResolver的占位符必须配置一个PropertySourcesPlaceholderConfigurer bean
     @Bean
     public static PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer() {
         return new PropertySourcesPlaceholderConfigurer();
+    }
+
+    @Override
+    public void setEmbeddedValueResolver(StringValueResolver resolver) {
+        this.resolver = resolver;
     }
 }
