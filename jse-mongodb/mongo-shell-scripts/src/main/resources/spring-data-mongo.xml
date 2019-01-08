@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:mongo="http://www.springframework.org/schema/data/mongo"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/data/mongo http://www.springframework.org/schema/data/mongo/spring-mongo.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:property-placeholder location="classpath*:settings.properties"/>
+
+    <!-- mongo setting -->
+    <bean id="mappingContext"
+          class="org.springframework.data.mongodb.core.mapping.MongoMappingContext"/>
+
+    <bean id="defaultMongoTypeMapper"
+          class="org.springframework.data.mongodb.core.convert.DefaultMongoTypeMapper">
+        <constructor-arg name="typeKey">
+            <null/>
+        </constructor-arg>
+    </bean>
+
+    <!-- mongo setting -->
+    <!-- test -->
+    <mongo:mongo-client id="mongo"
+                        replica-set="${mongo.replica.set}" credentials="${mongo.credentials}">
+        <mongo:client-options
+                write-concern="SAFE"
+                connections-per-host="${mongo.connection.per.host}"
+                connect-timeout="${mongo.connection.timeout}"
+                socket-timeout="${mongo.socket.timeout}"
+                max-wait-time="${mongo.max.wait.timeout}"
+                read-preference="SECONDARY_PREFERRED"
+                socket-keep-alive="true"
+                ssl="false"/>
+    </mongo:mongo-client>
+
+    <mongo:db-factory id="mongoDbFactory" dbname="${mongo.db.name}" mongo-ref="mongo"/>
+
+    <mongo:mapping-converter
+            id="mappingMongoConverter"
+            db-factory-ref="mongoDbFactory"
+            mapping-context-ref="mappingContext"
+            type-mapper-ref="defaultMongoTypeMapper"/>
+
+    <mongo:template
+            id="mongoTemplate"
+            db-factory-ref="mongoDbFactory"
+            converter-ref="mappingMongoConverter"/>
+</beans>
