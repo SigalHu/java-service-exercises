@@ -19,7 +19,6 @@
     </bean>
 
     <!-- mongo setting -->
-    <!-- test -->
     <mongo:mongo-client id="mongo"
                         replica-set="${mongo.replica.set}" credentials="${mongo.credentials}">
         <mongo:client-options
