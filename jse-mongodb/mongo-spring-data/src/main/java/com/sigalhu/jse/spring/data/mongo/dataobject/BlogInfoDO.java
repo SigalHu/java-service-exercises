@@ -6,8 +6,10 @@ import org.springframework.data.domain.Persistable;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @author huxujun
@@ -69,5 +71,18 @@ public class BlogInfoDO {
         private String content;
 
         private Date date;
+    }
+
+    public static void main(String[] args) {
+        List<BlogInfoDO> blogInfoDOS = new ArrayList<>();
+        for (int i = 0; i < 100; i++) {
+            BlogInfoDO blogInfoDO = new BlogInfoDO();
+            blogInfoDO.setId(String.valueOf(i % 10));
+            blogInfoDO.setTitle(String.valueOf(i));
+            blogInfoDOS.add(blogInfoDO);
+        }
+        System.err.println(
+                blogInfoDOS.stream().collect(Collectors.toMap(BlogInfoDO::getId, blogInfo -> blogInfo))
+        );
     }
 }
