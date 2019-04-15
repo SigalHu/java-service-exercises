@@ -15,4 +15,5 @@ public class Example {
     public static final Logger infoLogger = LoggerFactory.getLogger("infoLogger");
     public static final Logger warnLogger = LoggerFactory.getLogger("warnLogger");
     public static final Logger errorLogger = LoggerFactory.getLogger("errorLogger");
+    public static final Logger packageLogger = LoggerFactory.getLogger(Example.class);
 }

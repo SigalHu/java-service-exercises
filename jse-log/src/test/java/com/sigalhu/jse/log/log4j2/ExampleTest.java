@@ -25,5 +25,9 @@ public class ExampleTest {
         Example.errorLogger.info("log4j2 error test!");
         Example.errorLogger.warn("log4j2 error test!");
         Example.errorLogger.error("log4j2 error test!");
+
+        Example.packageLogger.info("log4j2 package test!");
+        Example.packageLogger.warn("log4j2 package test!");
+        Example.packageLogger.error("log4j2 package test!");
     }
 }

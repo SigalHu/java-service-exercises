@@ -89,5 +89,9 @@
         <Logger name="errorLogger" level="error" additivity="false">
             <AppenderRef ref="errorAppender"/>
         </Logger>
+
+        <Logger name="com.sigalhu" level="info">
+            <AppenderRef ref="infoAppender"/>
+        </Logger>
     </Loggers>
 </Configuration>
