@@ -8,9 +8,10 @@ import org.apache.logging.log4j.Logger;
  * @date 2018/9/10
  */
 public class Example {
-    public static final Logger rootLogger = LogManager.getLogger();
+    public static final Logger rootLogger = LogManager.getRootLogger();
     public static final Logger infoLogger = LogManager.getLogger("infoLogger");
     public static final Logger warnLogger = LogManager.getLogger("warnLogger");
     public static final Logger errorLogger = LogManager.getLogger("errorLogger");
+    public static final Logger packageLogger = LogManager.getLogger(Example.class);
 }
 

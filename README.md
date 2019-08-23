@@ -5,54 +5,54 @@ Java相关工具库、中间件等使用案例
 ### 编译构建
 
 * jse-maven
-  * mvn-shade-package（参考《Maven实战》第3/4/7/8章）
-    * maven-shade-plugin打包插件的使用
+  * mvn-shade-package（参考《Maven 实战》第 3/4/7/8 章）
+    * maven-shade-plugin 打包插件的使用
     * 依赖/插件/聚合/继承
-  * mvn-assembly-package（参考《Maven实战》第14章）
-    * maven-assembly-plugin打包插件的使用
-    * maven-dependency-plugin插件的使用
+  * mvn-assembly-package（参考《Maven 实战》第 14 章）
+    * maven-assembly-plugin 打包插件的使用
+    * maven-dependency-plugin 插件的使用
     * resource/filtering/profile
   * mvn-jetty-webapp
-    * jetty-maven-plugin插件的使用
-  * mvn-sample-webapp（参考《Maven实战》第4/5/8/10/12章）
-    * 使用maven构建web应用
+    * jetty-maven-plugin 插件的使用
+  * mvn-sample-webapp（参考《Maven 实战》第 4/5/8/10/12 章）
+    * 使用 maven 构建 web 应用
     
 ### 开发框架
 
 * jse-spring
-  * knights（参考《Spring实战》第1章）
-    * DI/AOP/xml配置
-    * Mockito的使用
-  * soundsystem（参考《Spring实战》第2章）
-    * 自动化装配bean（scan）
-    * 通过Java代码装配bean（code）
-    * 通过xml装配bean（xml）
-  * restfun（参考《Spring实战》第2/3章）
+  * knights（参考《Spring 实战》第 1 章）
+    * DI/AOP/xml 配置
+    * Mockito 的使用
+  * soundsystem（参考《Spring 实战》第 2 章）
+    * 自动化装配 bean（scan）
+    * 通过 Java 代码装配 bean（code）
+    * 通过 xml 装配 bean（xml）
+  * restfun（参考《Spring 实战》第 2/3 章）
     * 导入和混合配置
-    * 环境与profile
-    * 条件化的bean
-  * desserteater（参考《Spring实战》第3章）
-    * 标示首选的bean
-    * 限定自动装配的bean
-  * person（参考《Spring实战》第3章）
-    * 运行时注入，包括Spring的Environment/属性占位符/SpEL表达式
-  * aop（参考《Spring实战》第4章）
-    * 通过scan和code方式实现aop（concert）
-    * 通过xml方式实现aop（soundsystem）
+    * 环境与 profile
+    * 条件化的 bean
+  * desserteater（参考《Spring 实战》第 3 章）
+    * 标示首选的 bean
+    * 限定自动装配的 bean
+  * person（参考《Spring 实战》第 3 章）
+    * 运行时注入，包括 Spring 的 Environment/属性占位符/SpEL 表达式
+  * aop（参考《Spring 实战》第 4 章）
+    * 通过 scan 和 code 方式实现 aop（concert）
+    * 通过 xml 方式实现 aop（soundsystem）
   * conflict
-    * 解决bean id冲突
-    * @Autowired与@Resource的区别
+    * 解决 bean id 冲突
+    * @Autowired 与 @Resource 的区别
   * mockito
-    * 使用mockito对bean进行mock和spy
-    * 将mock和spy注入到代理bean
-      
+    * 使用 mockito 对 bean 进行 mock 和 spy
+    * 将 mock 和 spy 注入到代理 bean
+
 * jse-springmvc
-  * springmvc-spittr（参考《Spring实战》第5/7章）
+  * springmvc-spittr（参考《Spring实战》第 5/7 章）
     * 控制器、为控制器添加通知
-    * 请求输入、表单处理、multipart形式数据处理
+    * 请求输入、表单处理、multipart 形式数据处理
     * 异常处理、跨重定向请求传递数据
     * 请求过滤、用户认证、请求拦截
-     
+
 ### 数据库
 
 * jse-mongodb
@@ -63,19 +63,19 @@ Java相关工具库、中间件等使用案例
 ### 日志
 
 * jse-log
-  * log4j的使用
-  * log4j2的使用
-  * slf4j搭配log4j或log4j2输出日志
+  * log4j 的使用
+  * log4j2 的使用
+  * slf4j 搭配 log4j 或 log4j2 输出日志
   
 ### 单元测试
 
-* jse-junit（参考[junit5官网](https://junit.org/junit5/docs/current/user-guide/#writing-tests)）
+* jse-junit（参考 [JUnit 5 User Guide](https://junit.org/junit5/docs/current/user-guide/#writing-tests)）
   * 初始化和销毁（StandardTests）
   * 断言（AssertionsDemo）
   * 前置条件（AssumptionsDemo）
   * 跳过测试（DisabledDemo）
   
-* jse-mockito（参考[mockito 2.22.0](https://static.javadoc.io/org.mockito/mockito-core/2.22.0/org/mockito/Mockito.html)）
+* jse-mockito（参考 [mockito 2.22.0](https://static.javadoc.io/org.mockito/mockito-core/2.22.0/org/mockito/Mockito.html)）
   * 返回期望值（StubbingTest）
   * 验证行为（VerifyTest）
   * 参数匹配（ArgumentMatchersTest）
@@ -84,17 +84,17 @@ Java相关工具库、中间件等使用案例
 
 ### 实用工具
 
-* jse-lombok（参考[lombok官网](https://www.projectlombok.org/features/all)）
+* jse-lombok（参考 [Lombok features](https://www.projectlombok.org/features/all)）
   * 语法糖相关（`val/var/@NunNull/@Cleanup`）
-  * POJO相关（`@Getter/@Setter/@ToString/@EqualsAndHashCode/@Data/@Value`）
+  * POJO 相关（`@Getter/@Setter/@ToString/@EqualsAndHashCode/@Data/@Value`）
   * 构造相关（`@NoArgsConstructor/@RequiredArgsConstructor/@AllArgsConstructor/@Builder`）
   * 异常相关（`@SneakyThrows`）
   * 并发相关（`@Synchronized`）
   * 日志相关（`@Log`）
   
-* jse-cglib（参考[CGLib 使用手册](https://www.jianshu.com/p/76a12f333e7a)）
+* jse-cglib（参考 [cglib: The missing manual](http://mydailyjava.blogspot.com/2013/11/cglib-missing-manual.html)）
   * 回调过滤（`CallbackFilter`）
   * 拦截器（`FixedValue/MethodInterceptor/NoOp.INSTANCE`）
   * 延迟加载(`LazyLoader/Dispatcher/ProxyRefDispatcher`)
-  * bean操作（`ImmutableBean/BeanGenerator/BeanCopier/BeanMap`）
+  * bean 操作（`ImmutableBean/BeanGenerator/BeanCopier/BeanMap`）
   * 类型整合（`Mixin`）
