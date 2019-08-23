@@ -19,39 +19,39 @@ Java相关工具库、中间件等使用案例
     
 ### 开发框架
 
-  * jse-spring
-    * knights（参考《Spring 实战》第 1 章）
-      * DI/AOP/xml 配置
-      * Mockito 的使用
-    * soundsystem（参考《Spring 实战》第 2 章）
-      * 自动化装配 bean（scan）
-      * 通过 Java 代码装配 bean（code）
-      * 通过 xml 装配 bean（xml）
-    * restfun（参考《Spring 实战》第 2/3 章）
-      * 导入和混合配置
-      * 环境与 profile
-      * 条件化的 bean
-    * desserteater（参考《Spring 实战》第 3 章）
-      * 标示首选的 bean
-      * 限定自动装配的 bean
-    * person（参考《Spring 实战》第 3 章）
-      * 运行时注入，包括 Spring 的 Environment/属性占位符/SpEL 表达式
-    * aop（参考《Spring 实战》第 4 章）
-      * 通过 scan 和 code 方式实现 aop（concert）
-      * 通过 xml 方式实现 aop（soundsystem）
-    * conflict
-      * 解决 bean id 冲突
-      * @Autowired 与 @Resource 的区别
-    * mockito
-      * 使用 mockito 对 bean 进行 mock 和 spy
-      * 将 mock 和 spy 注入到代理 bean
-      
-  * jse-springmvc
-    * springmvc-spittr（参考《Spring实战》第 5/7 章）
-      * 控制器、为控制器添加通知
-      * 请求输入、表单处理、multipart 形式数据处理
-      * 异常处理、跨重定向请求传递数据
-      * 请求过滤、用户认证、请求拦截
+* jse-spring
+  * knights（参考《Spring 实战》第 1 章）
+    * DI/AOP/xml 配置
+    * Mockito 的使用
+  * soundsystem（参考《Spring 实战》第 2 章）
+    * 自动化装配 bean（scan）
+    * 通过 Java 代码装配 bean（code）
+    * 通过 xml 装配 bean（xml）
+  * restfun（参考《Spring 实战》第 2/3 章）
+    * 导入和混合配置
+    * 环境与 profile
+    * 条件化的 bean
+  * desserteater（参考《Spring 实战》第 3 章）
+    * 标示首选的 bean
+    * 限定自动装配的 bean
+  * person（参考《Spring 实战》第 3 章）
+    * 运行时注入，包括 Spring 的 Environment/属性占位符/SpEL 表达式
+  * aop（参考《Spring 实战》第 4 章）
+    * 通过 scan 和 code 方式实现 aop（concert）
+    * 通过 xml 方式实现 aop（soundsystem）
+  * conflict
+    * 解决 bean id 冲突
+    * @Autowired 与 @Resource 的区别
+  * mockito
+    * 使用 mockito 对 bean 进行 mock 和 spy
+    * 将 mock 和 spy 注入到代理 bean
+
+* jse-springmvc
+  * springmvc-spittr（参考《Spring实战》第 5/7 章）
+    * 控制器、为控制器添加通知
+    * 请求输入、表单处理、multipart 形式数据处理
+    * 异常处理、跨重定向请求传递数据
+    * 请求过滤、用户认证、请求拦截
         
 ### 日志
 
