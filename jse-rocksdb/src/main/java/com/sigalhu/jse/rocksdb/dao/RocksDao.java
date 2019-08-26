@@ -5,8 +5,12 @@ import org.rocksdb.*;
 
 import java.io.Closeable;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author huxujun
@@ -17,6 +21,7 @@ public class RocksDao implements Closeable {
     @Getter
     private RocksDB rocksDB;
     private List<ColumnFamilyHandle> columnFamilyHandles = new ArrayList<>();
+    private Map<String, ColumnFamilyHandle> handleMap = new HashMap<>();
 
     static {
         RocksDB.loadLibrary();
@@ -33,10 +38,20 @@ public class RocksDao implements Closeable {
                 cfDescriptors.add(new ColumnFamilyDescriptor(columnFamilyName.getBytes(), cfOpts));
             }
 
+            if (Files.notExists(Paths.get(path))) {
+                Files.createDirectories(Paths.get(path));
+            }
             rocksDB = RocksDB.open(options, path, cfDescriptors, columnFamilyHandles);
+            for (ColumnFamilyHandle handle : columnFamilyHandles) {
+                handleMap.put(new String(handle.getName()), handle);
+            }
         } catch (Exception ex) {
             throw new RuntimeException(ex);
         }
+    }
+
+    public ColumnFamilyHandle columnFamilyHandle(String columnFamilyName) {
+        return handleMap.get(columnFamilyName);
     }
 
     @Override
