@@ -19,7 +19,7 @@
         <module>jse-mockito</module>
         <module>jse-cglib</module>
         <module>jse-netty</module>
-        <module>jse-protobuf</module>
+        <module>jse-serialize</module>
     </modules>
 
     <properties>
@@ -42,7 +42,6 @@
         <netty.version>4.1.32.Final</netty.version>
         <geronimo-servlet.version>1.0</geronimo-servlet.version>
         <fastjson.version>1.2.54</fastjson.version>
-        <protostuff.vsersion>1.6.0</protostuff.vsersion>
 
         <!--test-->
         <junit.version>4.12</junit.version>
@@ -203,7 +202,7 @@
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok</artifactId>
                 <version>${lombok.version}</version>
-                <scope>provided</scope>
+                <scope>compile</scope>
             </dependency>
             <dependency>
                 <groupId>cglib</groupId>
@@ -214,16 +213,6 @@
                 <groupId>com.alibaba</groupId>
                 <artifactId>fastjson</artifactId>
                 <version>${fastjson.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>io.protostuff</groupId>
-                <artifactId>protostuff-core</artifactId>
-                <version>${protostuff.vsersion}</version>
-            </dependency>
-            <dependency>
-                <groupId>io.protostuff</groupId>
-                <artifactId>protostuff-runtime</artifactId>
-                <version>${protostuff.vsersion}</version>
             </dependency>
 
             <!--log4j-->
