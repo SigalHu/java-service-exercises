@@ -14,7 +14,7 @@ import java.util.Date;
  */
 public class KryoUtils {
     private static final Kryo kryo = new Kryo();
-    private static final Output output = new Output(256, 10 * 1024);
+    private static final Output output = new Output(256, 1024 * 1024);
     private static final Input input = new Input();
 
     static {
