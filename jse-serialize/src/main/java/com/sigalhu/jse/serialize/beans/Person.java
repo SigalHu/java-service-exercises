@@ -4,6 +4,7 @@ import io.protostuff.Exclude;
 import io.protostuff.Tag;
 import lombok.Data;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -11,7 +12,8 @@ import java.util.Date;
  * @date 2019/1/17
  */
 @Data
-public class Person {
+public class Person implements Serializable {
+    private static final long serialVersionUID = -1550213275663745027L;
 
     @Tag(1)
     private Long id;
