@@ -74,4 +74,63 @@ public class ProtobufUtils {
             throw new RuntimeException();
         }
     }
+
+    public static byte[] toBytes3(Person person) {
+        PersonProto3.Person3 p = PersonProto3.Person3.newBuilder()
+                .setId(person.getId())
+                .setName(person.getName())
+                .setAge(person.getAge())
+                .setHeight(person.getHeight())
+                .setCreateTime(person.getCreateTime().getTime())
+                .build();
+        return p.toByteArray();
+    }
+
+    public static Person parseBytes3(byte[] bytes) throws InvalidProtocolBufferException {
+        PersonProto3.Person3 p = PersonProto3.Person3.parseFrom(bytes);
+        Person person = new Person();
+        person.setId(p.getId());
+        person.setName(p.getName());
+        person.setAge(p.getAge());
+        person.setHeight(p.getHeight());
+        person.setCreateTime(new Date(p.getCreateTime()));
+        return person;
+    }
+
+    public static byte[] toDelimitedBytes3(List<Person> people) {
+        try (ByteArrayOutputStream output = new ByteArrayOutputStream()) {
+            for (Person person : people) {
+                PersonProto3.Person3 p = PersonProto3.Person3.newBuilder()
+                        .setId(person.getId())
+                        .setName(person.getName())
+                        .setAge(person.getAge())
+                        .setHeight(person.getHeight())
+                        .setCreateTime(person.getCreateTime().getTime())
+                        .build();
+                p.writeDelimitedTo(output);
+            }
+            return output.toByteArray();
+        } catch (IOException ex) {
+            throw new RuntimeException();
+        }
+    }
+
+    public static List<Person> parseDelimitedBytes3(byte[] bytes) {
+        try (ByteArrayInputStream input = new ByteArrayInputStream(bytes)) {
+            List<Person> people = new ArrayList<>();
+            while (input.available() > 0) {
+                PersonProto3.Person3 p = PersonProto3.Person3.parseDelimitedFrom(input);
+                Person person = new Person();
+                person.setId(p.getId());
+                person.setName(p.getName());
+                person.setAge(p.getAge());
+                person.setHeight(p.getHeight());
+                person.setCreateTime(new Date(p.getCreateTime()));
+                people.add(person);
+            }
+            return people;
+        } catch (IOException ex) {
+            throw new RuntimeException();
+        }
+    }
 }
