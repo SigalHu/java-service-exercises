@@ -8,8 +8,6 @@ import org.junit.Test;
 
 import java.util.List;
 
-import static org.junit.Assert.*;
-
 /**
  * @author huxujun
  * @date 2019/9/28
