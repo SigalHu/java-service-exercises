@@ -40,3 +40,5 @@ local.properties
 .loadpath
 **/.DS_Store
 .DS_Store
+
+tmp

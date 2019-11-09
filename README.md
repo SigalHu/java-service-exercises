@@ -98,3 +98,11 @@ Java相关工具库、中间件等使用案例
   * 延迟加载(`LazyLoader/Dispatcher/ProxyRefDispatcher`)
   * bean 操作（`ImmutableBean/BeanGenerator/BeanCopier/BeanMap`）
   * 类型整合（`Mixin`）
+  
+* jse-serialize（参考 [kryo](https://github.com/EsotericSoftware/kryo)\/[protobuf](https://developers.google.cn/protocol-buffers/docs/overview)\/[protostuff](https://protostuff.github.io/docs/)\/[jvm-serializers](https://github.com/eishay/jvm-serializers/wiki)）
+  * 使用原生方式进行序列化、反序列化
+  * 使用 kryo 进行序列化、反序列化
+  * 使用 protobuf 进行序列化、反序列化（proto2/proto3）
+  * 使用 protostuff 进行序列化、反序列化（`ProtobufIOUtil/ProtostuffIOUtil`）
+  * protobuf/protostuff 相互序列化、反序列化测试
+  * 不同序列化方式的性能测试

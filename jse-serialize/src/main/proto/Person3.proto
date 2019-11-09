@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option java_package = "com.sigalhu.jse.serialize.protobuf";
+option java_outer_classname = "PersonProto3";
+
+message Person3 {
+    int64 id = 1;
+    string name = 2;
+    int32 age = 3;
+    double height = 4;
+    fixed64 createTime = 5;
+}
