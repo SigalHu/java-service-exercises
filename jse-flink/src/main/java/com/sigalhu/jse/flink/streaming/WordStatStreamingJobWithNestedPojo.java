@@ -13,7 +13,7 @@ import org.apache.flink.util.Collector;
 import org.apache.flink.util.StringUtils;
 
 /**
- * 通过内嵌 POJO 实时统计词频，运行之前控制台执行 nc -lk 9999
+ * 使用内嵌 POJO 实时统计词频，运行之前控制台执行 nc -lk 9999
  *
  * @author huxujun
  * @date 2019/11/8
