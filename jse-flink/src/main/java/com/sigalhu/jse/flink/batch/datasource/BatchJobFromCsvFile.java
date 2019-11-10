@@ -1,4 +1,4 @@
-package com.sigalhu.jse.flink.batch;
+package com.sigalhu.jse.flink.batch.datasource;
 
 import org.apache.flink.api.java.ExecutionEnvironment;
 import org.apache.flink.api.java.operators.DataSource;

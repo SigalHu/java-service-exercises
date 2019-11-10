@@ -1,4 +1,4 @@
-package com.sigalhu.jse.flink.batch;
+package com.sigalhu.jse.flink.batch.datasource;
 
 import org.apache.flink.api.common.functions.FlatMapFunction;
 import org.apache.flink.api.java.ExecutionEnvironment;
@@ -8,12 +8,12 @@ import org.apache.flink.util.Collector;
 import org.apache.flink.util.StringUtils;
 
 /**
- * 批处理统计词频
+ * 批处理文本统计词频
  * 
  * @author huxujun
  * @date 2019/11/8
  */
-public class BatchJobFromCollection {
+public class BatchJobFromTextFile {
 
     public static void main(String[] args) throws Exception {
 
@@ -21,7 +21,7 @@ public class BatchJobFromCollection {
         final ExecutionEnvironment env = ExecutionEnvironment.getExecutionEnvironment();
 
         // 读取数据
-        DataSource<String> text = env.fromElements("Hello", "World", "Hello World");
+        DataSource<String> text = env.readTextFile(ClassLoader.getSystemResource("words.txt").getPath());
 
         // transform
         text.flatMap(new FlatMapFunction<String, Tuple2<String, Integer>>() {

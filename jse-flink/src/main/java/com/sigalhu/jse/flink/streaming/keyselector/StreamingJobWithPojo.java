@@ -1,4 +1,4 @@
-package com.sigalhu.jse.flink.streaming;
+package com.sigalhu.jse.flink.streaming.keyselector;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
