@@ -8,12 +8,12 @@ import org.apache.flink.util.Collector;
 import org.apache.flink.util.StringUtils;
 
 /**
- * 批处理统计词频
+ * 批处理文本统计词频
  * 
  * @author huxujun
  * @date 2019/11/8
  */
-public class BatchJobFromFile {
+public class BatchJobFromTextFile {
 
     public static void main(String[] args) throws Exception {
 
