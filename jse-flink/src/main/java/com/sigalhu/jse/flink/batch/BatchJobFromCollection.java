@@ -13,7 +13,7 @@ import org.apache.flink.util.StringUtils;
  * @author huxujun
  * @date 2019/11/8
  */
-public class WordStatBatchJobFromElements {
+public class BatchJobFromCollection {
 
     public static void main(String[] args) throws Exception {
 

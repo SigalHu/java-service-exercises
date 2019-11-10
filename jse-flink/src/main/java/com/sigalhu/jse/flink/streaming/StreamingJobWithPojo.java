@@ -19,7 +19,7 @@ import org.apache.flink.util.StringUtils;
  * @author huxujun
  * @date 2019/11/8
  */
-public class WordStatStreamingJobWithPojo {
+public class StreamingJobWithPojo {
 
     public static void main(String[] args) throws Exception {
 
