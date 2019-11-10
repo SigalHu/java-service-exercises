@@ -16,8 +16,14 @@ import org.apache.flink.util.StringUtils;
 public class WordStatBatchJob {
 
     public static void main(String[] args) throws Exception {
+
+        // 获取执行环境
         final ExecutionEnvironment env = ExecutionEnvironment.getExecutionEnvironment();
+
+        // 读取数据
         DataSource<String> text = env.readTextFile(ClassLoader.getSystemResource("words.txt").getPath());
+
+        // transform
         text.flatMap(new FlatMapFunction<String, Tuple2<String, Integer>>() {
             @Override
             public void flatMap(String line, Collector<Tuple2<String, Integer>> collector) throws Exception {
