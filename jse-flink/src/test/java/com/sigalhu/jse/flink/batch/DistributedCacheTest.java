@@ -5,14 +5,11 @@ import org.apache.flink.api.java.ExecutionEnvironment;
 import org.apache.flink.api.java.operators.DataSource;
 import org.apache.flink.configuration.Configuration;
 import org.apache.flink.shaded.guava18.com.google.common.io.Files;
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.io.File;
 import java.nio.charset.StandardCharsets;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.List;
 
 /**
@@ -22,7 +19,7 @@ import java.util.List;
 public class DistributedCacheTest {
 
     private ExecutionEnvironment env;
-    DataSource<String> text;
+    private DataSource<String> text;
 
     @Before
     public void setUp() throws Exception {

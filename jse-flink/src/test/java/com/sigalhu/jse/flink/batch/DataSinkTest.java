@@ -19,7 +19,7 @@ import java.nio.file.Paths;
 public class DataSinkTest {
 
     private ExecutionEnvironment env;
-    DataSource<String> text;
+    private DataSource<String> text;
     private Path sinkPath;
 
     @Before
