@@ -36,6 +36,7 @@ public class CounterTest {
 
             @Override
             public Integer map(String s) throws Exception {
+                System.out.println(counter.getLocalValue());
                 counter.add(1);
                 return counter.getLocalValue();
             }
