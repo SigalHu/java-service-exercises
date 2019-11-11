@@ -24,7 +24,6 @@ import org.junit.Test;
 public class KeySelectTest {
 
     private StreamExecutionEnvironment env;
-    private int port;
     private DataStreamSource<String> text;
 
     @Before
@@ -32,7 +31,7 @@ public class KeySelectTest {
         // 获取执行环境
         env = StreamExecutionEnvironment.getExecutionEnvironment();
         // 获取参数，运行之前控制台执行 nc -lk 9999
-        port = ParameterTool.fromSystemProperties().getInt("port", 9999);
+        int port = ParameterTool.fromSystemProperties().getInt("port", 9999);
         // 读取数据
         text = env.socketTextStream("localhost", port);
     }
