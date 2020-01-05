@@ -21,6 +21,7 @@
         <module>jse-netty</module>
         <module>jse-rocksdb</module>
         <module>jse-serialize</module>
+        <module>jse-flink</module>
     </modules>
 
     <properties>

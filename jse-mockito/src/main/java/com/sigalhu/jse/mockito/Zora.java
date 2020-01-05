@@ -7,6 +7,7 @@ package com.sigalhu.jse.mockito;
 public class Zora {
 
     public String say() {
+        System.out.println("Executing Zora.say()");
         return "I am Zora.";
     }
 }
