@@ -1,11 +1,9 @@
 package com.sigalhu.jse.mockito;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.Mockito;
-import org.mockito.Spy;
+import org.mockito.*;
 import org.mockito.junit.MockitoJUnitRunner;
 
 /**
@@ -34,14 +32,27 @@ public class AnnotationsTest {
     @Spy
     private Zora zora;
 
-//    @Before
-//    public void initMocks() {
-//        MockitoAnnotations.initMocks(this);
-//    }
+    @Before
+    public void initMocks() {
+        Mockito.when(kevin.say()).thenReturn("I am mock kevin.");
+    }
 
     @Test
-    public void test() {
-        Mockito.when(kevin.say()).thenReturn("I am mock kevin.");
+    public void mockKevin() {
+        person.sayAll();
+    }
+
+    @Test
+    public void spyZora() {
+        // 会调用真实的方法
+        Mockito.when(zora.say()).thenReturn("I am spy zora.");
+        person.sayAll();
+
+        Mockito.reset(zora);
+        System.out.println("Reset spy zora!");
+
+        // 不会调用真实方法
+        Mockito.doReturn("I am spy zora.").when(zora).say();
         person.sayAll();
     }
 }
