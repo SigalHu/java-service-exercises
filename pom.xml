@@ -21,6 +21,7 @@
         <module>jse-cglib</module>
         <module>jse-netty</module>
         <module>jse-serialize</module>
+        <module>jse-flink</module>
     </modules>
 
     <properties>

@@ -106,3 +106,20 @@ Java相关工具库、中间件等使用案例
   * 使用 protostuff 进行序列化、反序列化（`ProtobufIOUtil/ProtostuffIOUtil`）
   * protobuf/protostuff 相互序列化、反序列化测试
   * 不同序列化方式的性能测试
+  
+### 流式计算
+
+* jse-flink
+  * DataSet 的使用（batch）
+    * DataSources 数据输入（DataSourceTest）
+    * DataSet 转换操作（TransformTest）
+    * DataSinks 数据输出（DataSinkTest）
+    * 累加器的使用（CounterTest）
+    * 分布式缓存的使用（DistributedCacheTest）
+    * Flink SQL 的使用（SQLTest）
+  * DataStream 的使用（streaming）
+    * DataSources 数据输入（DataStreamTest）
+    * DataSet 转换操作（TransformTest）
+    * DataSinks 数据输出（DataSinkTest）
+    * Windows 窗口计算（WindowsTest）
+    * keyBy 分组（KeySelectTest）
