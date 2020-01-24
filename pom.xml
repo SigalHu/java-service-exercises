@@ -21,6 +21,7 @@
         <module>jse-netty</module>
         <module>jse-serialize</module>
         <module>jse-flink</module>
+        <module>jse-es</module>
     </modules>
 
     <properties>
