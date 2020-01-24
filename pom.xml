@@ -27,7 +27,7 @@
     <properties>
         <!--framework-->
         <springframework.version>4.2.9.RELEASE</springframework.version>
-        <spring-data-elasticsearch>3.0.10.RELEASE</spring-data-elasticsearch>
+        <spring-data-elasticsearch.version>3.0.8.RELEASE</spring-data-elasticsearch.version>
         <aspectj.version>1.7.4</aspectj.version>
 
         <!--third part-->
@@ -143,7 +143,7 @@
             <dependency>
                 <groupId>org.springframework.data</groupId>
                 <artifactId>spring-data-elasticsearch</artifactId>
-                <version>${spring-data-elasticsearch}</version>
+                <version>${spring-data-elasticsearch.version}</version>
             </dependency>
 
             <!--netty-->
