@@ -20,7 +20,6 @@
     <!-- 配置 ElasticSearch 的连接 -->
     <elasticsearch:transport-client id="client" cluster-nodes="${es.cluster.nodes}" cluster-name="${es.cluster.name}"/>
 
-
     <!-- ElasticSearch 模版对象 -->
     <bean id="elasticsearchTemplate" class="org.springframework.data.elasticsearch.core.ElasticsearchTemplate">
         <constructor-arg name="client" ref="client"/>
