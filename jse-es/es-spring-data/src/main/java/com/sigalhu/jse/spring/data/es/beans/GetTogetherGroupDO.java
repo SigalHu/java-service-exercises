@@ -12,10 +12,10 @@ import org.springframework.data.elasticsearch.annotations.FieldType;
  */
 @Data
 @Document(indexName = "get-together", type = "group")
-public class GetTogetherGroup {
+public class GetTogetherGroupDO {
 
     @Id
-    private long id;
+    private Long id;
     @Field(type = FieldType.Text)
     private String name;
     @Field(type = FieldType.Text)
