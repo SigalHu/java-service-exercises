@@ -18,6 +18,7 @@
     </modules>
 
     <properties>
+        <aspectj.version>1.7.4</aspectj.version>
         <springframework.version>4.2.9.RELEASE</springframework.version>
     </properties>
 
@@ -101,14 +102,17 @@
         <dependency>
             <groupId>org.aspectj</groupId>
             <artifactId>aspectjrt</artifactId>
+            <version>${aspectj.version}</version>
         </dependency>
         <dependency>
             <groupId>org.aspectj</groupId>
             <artifactId>aspectjweaver</artifactId>
+            <version>${aspectj.version}</version>
         </dependency>
         <dependency>
             <groupId>org.aspectj</groupId>
             <artifactId>aspectjtools</artifactId>
+            <version>${aspectj.version}</version>
         </dependency>
 
         <!--third part-->
@@ -119,10 +123,13 @@
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
+            <version>4.0.1</version>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>javax.el</groupId>
             <artifactId>javax.el-api</artifactId>
+            <version>3.0.1-b06</version>
         </dependency>
         <dependency>
             <groupId>org.hibernate.validator</groupId>

@@ -12,15 +12,11 @@
     <artifactId>mvn-jetty-webapp</artifactId>
     <packaging>war</packaging>
 
-    <properties>
-        <servlet.version>4.0.1</servlet.version>
-    </properties>
-
     <dependencies>
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
-            <version>${servlet.version}</version>
+            <version>4.0.1</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>

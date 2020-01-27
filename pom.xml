@@ -24,22 +24,14 @@
     </modules>
 
     <properties>
-        <!--framework-->
-        <aspectj.version>1.7.4</aspectj.version>
-
         <!--third part-->
         <commons-lang3.version>3.7</commons-lang3.version>
         <cglib.version>3.2.9</cglib.version>
-        <mail.version>1.4.1</mail.version>
         <javax.servlet-api.version>4.0.1</javax.servlet-api.version>
         <javax.el-api.version>3.0.1-b06</javax.el-api.version>
-        <dom4j.version>1.6.1</dom4j.version>
-        <kaptcha.version>2.3.2</kaptcha.version>
         <log4j.version>1.2.17</log4j.version>
         <log4j2.version>2.10.0</log4j2.version>
         <slf4j.version>1.7.25</slf4j.version>
-        <netty.version>4.1.42.Final</netty.version>
-        <geronimo-servlet.version>1.0</geronimo-servlet.version>
         <fastjson.version>1.2.54</fastjson.version>
 
         <!--test-->
@@ -69,67 +61,11 @@
 
     <dependencyManagement>
         <dependencies>
-            <!--framework-->
-            <!--netty-->
-            <dependency>
-                <groupId>io.netty</groupId>
-                <artifactId>netty-all</artifactId>
-                <version>${netty.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.geronimo.specs</groupId>
-                <artifactId>geronimo-servlet_3.0_spec</artifactId>
-                <version>${geronimo-servlet.version}</version>
-            </dependency>
-
-            <!--AOP-->
-            <dependency>
-                <groupId>org.aspectj</groupId>
-                <artifactId>aspectjrt</artifactId>
-                <version>${aspectj.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.aspectj</groupId>
-                <artifactId>aspectjweaver</artifactId>
-                <version>${aspectj.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.aspectj</groupId>
-                <artifactId>aspectjtools</artifactId>
-                <version>${aspectj.version}</version>
-            </dependency>
-
             <!--third part-->
             <dependency>
                 <groupId>org.apache.commons</groupId>
                 <artifactId>commons-lang3</artifactId>
                 <version>${commons-lang3.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>javax.mail</groupId>
-                <artifactId>mail</artifactId>
-                <version>${mail.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>javax.servlet</groupId>
-                <artifactId>javax.servlet-api</artifactId>
-                <version>${javax.servlet-api.version}</version>
-                <scope>provided</scope>
-            </dependency>
-            <dependency>
-                <groupId>javax.el</groupId>
-                <artifactId>javax.el-api</artifactId>
-                <version>${javax.el-api.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>dom4j</groupId>
-                <artifactId>dom4j</artifactId>
-                <version>${dom4j.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.github.penggle</groupId>
-                <artifactId>kaptcha</artifactId>
-                <version>${kaptcha.version}</version>
             </dependency>
             <dependency>
                 <groupId>cglib</groupId>
