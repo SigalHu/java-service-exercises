@@ -31,6 +31,7 @@
             <!--定义实际项目中的一个Maven项目（模块），推荐使用实际项目名称作为artifactId的前缀-->
             <artifactId>junit</artifactId>
             <!--使用exclusions声明排除传递性依赖-->
+            <version>${junit.version}</version>
             <exclusions>
                 <exclusion>
                     <groupId>org.hamcrest</groupId>

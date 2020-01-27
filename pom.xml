@@ -25,22 +25,11 @@
 
     <properties>
         <!--third part-->
-        <commons-lang3.version>3.7</commons-lang3.version>
-        <cglib.version>3.2.9</cglib.version>
         <javax.servlet-api.version>4.0.1</javax.servlet-api.version>
         <javax.el-api.version>3.0.1-b06</javax.el-api.version>
         <log4j.version>1.2.17</log4j.version>
         <log4j2.version>2.10.0</log4j2.version>
         <slf4j.version>1.7.25</slf4j.version>
-        <fastjson.version>1.2.54</fastjson.version>
-
-        <!--test-->
-        <junit.version>4.12</junit.version>
-        <junit5.version>5.3.1</junit5.version>
-        <mockito-core.version>2.21.0</mockito-core.version>
-        <hamcrest-library.version>1.3</hamcrest-library.version>
-        <greenmail.version>1.5.7</greenmail.version>
-        <system-rules.version>1.18.0</system-rules.version>
 
         <!--plugin-->
         <maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>
@@ -57,27 +46,29 @@
             <version>1.18.2</version>
             <scope>compile</scope>
         </dependency>
+
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.54</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.7</version>
+        </dependency>
+
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <dependencyManagement>
         <dependencies>
-            <!--third part-->
-            <dependency>
-                <groupId>org.apache.commons</groupId>
-                <artifactId>commons-lang3</artifactId>
-                <version>${commons-lang3.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>cglib</groupId>
-                <artifactId>cglib</artifactId>
-                <version>${cglib.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.alibaba</groupId>
-                <artifactId>fastjson</artifactId>
-                <version>${fastjson.version}</version>
-            </dependency>
-
             <!--log4j-->
             <dependency>
                 <groupId>log4j</groupId>
@@ -110,44 +101,6 @@
                 <groupId>org.slf4j</groupId>
                 <artifactId>slf4j-log4j12</artifactId>
                 <version>${slf4j.version}</version>
-            </dependency>
-
-            <!--test-->
-            <dependency>
-                <groupId>junit</groupId>
-                <artifactId>junit</artifactId>
-                <version>${junit.version}</version>
-                <scope>test</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.junit.jupiter</groupId>
-                <artifactId>junit-jupiter-api</artifactId>
-                <version>${junit5.version}</version>
-                <scope>test</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.mockito</groupId>
-                <artifactId>mockito-core</artifactId>
-                <version>${mockito-core.version}</version>
-                <scope>test</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.hamcrest</groupId>
-                <artifactId>hamcrest-library</artifactId>
-                <version>${hamcrest-library.version}</version>
-                <scope>test</scope>
-            </dependency>
-            <dependency>
-                <groupId>com.icegreen</groupId>
-                <artifactId>greenmail</artifactId>
-                <version>${greenmail.version}</version>
-                <scope>test</scope>
-            </dependency>
-            <dependency>
-                <groupId>com.github.stefanbirkner</groupId>
-                <artifactId>system-rules</artifactId>
-                <version>${system-rules.version}</version>
-                <scope>test</scope>
             </dependency>
         </dependencies>
     </dependencyManagement>
