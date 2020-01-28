@@ -4,13 +4,13 @@ import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryo.io.Input;
 import com.esotericsoftware.kryo.io.Output;
 import com.esotericsoftware.kryo.serializers.BeanSerializer;
-import com.sun.tools.javac.util.Pair;
 import io.protostuff.LinkedBuffer;
 import io.protostuff.ProtobufIOUtil;
 import io.protostuff.ProtostuffIOUtil;
 import io.protostuff.Schema;
 import io.protostuff.runtime.RuntimeSchema;
 import lombok.Data;
+import org.apache.commons.lang3.tuple.Pair;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -70,8 +70,8 @@ public class SerializePerfTest {
         double size = 0D;
         for (int i = 0; i < 10; i++) {
             Pair<Long, Double> pair = testProtobuf();
-            cost += pair.fst;
-            size += pair.snd;
+            cost += pair.getLeft();
+            size += pair.getRight();
         }
         System.out.println("====== total cost and size ======");
         System.out.println("平均耗时：" + cost / 10D + "ms，平均大小：" + Math.round(size / 10D) + "B");
