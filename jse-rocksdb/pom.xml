@@ -17,14 +17,5 @@
             <artifactId>rocksdbjni</artifactId>
             <version>6.0.1</version>
         </dependency>
-
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-        </dependency>
     </dependencies>
 </project>
