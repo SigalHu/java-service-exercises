@@ -16,6 +16,8 @@
         <dependency>
             <groupId>com.icegreen</groupId>
             <artifactId>greenmail</artifactId>
+            <version>1.5.7</version>
+            <scope>test</scope>
         </dependency>
 
         <!--依赖模块-->

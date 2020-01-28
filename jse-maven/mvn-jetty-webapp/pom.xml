@@ -12,15 +12,11 @@
     <artifactId>mvn-jetty-webapp</artifactId>
     <packaging>war</packaging>
 
-    <properties>
-        <servlet.version>4.0.1</servlet.version>
-    </properties>
-
     <dependencies>
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
-            <version>${servlet.version}</version>
+            <version>4.0.1</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>
@@ -30,7 +26,7 @@
             <plugin>
                 <groupId>org.eclipse.jetty</groupId>
                 <artifactId>jetty-maven-plugin</artifactId>
-                <version>9.4.4.v20170414</version>
+                <version>9.4.26.v20200117</version>
                 <configuration>
                     <httpConnector>
                         <!--连接监听的端口，默认8080-->
