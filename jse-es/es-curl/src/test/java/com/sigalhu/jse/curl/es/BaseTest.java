@@ -14,12 +14,22 @@ import java.io.InputStreamReader;
 public class BaseTest {
 
     @Test
-    public void test() throws IOException, InterruptedException {
-        Process p = Runtime.getRuntime().exec("curl localhost:9200");
-        p.waitFor();
-        print(p.getInputStream());
+    public void test() {
+        exec("curl localhost:9200");
     }
-    
+
+    public static void exec(String cmd) {
+        try {
+            Process p = Runtime.getRuntime().exec(new String[]{"sh", "-c", cmd});
+            p.waitFor();
+            System.out.println(cmd);
+            System.out.println("\nThe response is ...");
+            print(p.getInputStream());
+        } catch (InterruptedException|IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     public static void print(InputStream inputStream) {
         try (
                 InputStreamReader streamReader = new InputStreamReader(inputStream);
