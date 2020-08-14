@@ -116,3 +116,10 @@ Java相关工具库、中间件等使用案例
     * DataSinks 数据输出（DataSinkTest）
     * Windows 窗口计算（WindowsTest）
     * keyBy 分组（KeySelectTest）
+
+
+### 数据存储
+
+* jse-rocksdb
+  * 初始化和配置（RocksDaoTest）
+  * put/get/delete 操作（BasicOperateTest）
