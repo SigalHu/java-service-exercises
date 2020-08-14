@@ -41,4 +41,4 @@ local.properties
 **/.DS_Store
 .DS_Store
 
-tmp
+tmp/
