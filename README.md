@@ -120,6 +120,15 @@ Java相关工具库、中间件等使用案例
 
 ### 数据存储
 
+* jse-es
+  * es-curl
+    * CURD 操作（CurdTest）
+    * Index 操作（IndexTest）
+  * es-spring-data
+    * ElasticsearchTemplate 的初始化和配置
+    * CURD 操作（CurdTest）
+    * Index 操作（IndexTest）
+
 * jse-rocksdb
-  * 初始化和配置（RocksDaoTest）
+  * RocksDB 的初始化和配置（RocksDaoTest）
   * put/get/delete 操作（BasicOperateTest）
