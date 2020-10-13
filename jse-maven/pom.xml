@@ -29,7 +29,7 @@
 
     <!--使用properties定义Maven属性-->
     <properties>
-        <junit.version>4.12</junit.version>
+        <junit.version>4.13.1</junit.version>
         <hamcrest-core.version>1.2</hamcrest-core.version>
     </properties>
 
